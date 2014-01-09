@@ -1,0 +1,6 @@
+INDEX VERSION 1.122+/home/ahochene/Bureau/DansTesFesses/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+589855374.index
+2864530133.index
+3449447011.index
+2646355880.index
+3952733811.index

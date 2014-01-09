@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="FesseBook">
+        <wb-resource deploy-path="/" source-path="/WebContent"/>
+        <property name="context-root" value="FesseBook"/>
+        <property name="java-output-path" value="/FesseBook/build/classes"/>
+    </wb-module>
+</project-modules>
