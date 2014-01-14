@@ -15,7 +15,8 @@ public class Group {
 	private ArrayList<ObjectId> _postsId;
 	private ArrayList<ObjectId> _membersId;
 	private ArrayList<ObjectId> _picturesId;
-	private ArrayList<ObjectId> _adminId;
+	private ArrayList<ObjectId> _adminsId;
+	private ArrayList<ObjectId> _waitingForResponse;
 	
 	public ObjectId get_id() {
 		return _id;
@@ -53,10 +54,10 @@ public class Group {
 		this._picturesId = _picturesId;
 	}
 	public ArrayList<ObjectId> get_adminId() {
-		return _adminId;
+		return _adminsId;
 	}
 	public void set_adminId(ArrayList<ObjectId> _adminId) {
-		this._adminId = _adminId;
+		this._adminsId = _adminId;
 	}
 
 
