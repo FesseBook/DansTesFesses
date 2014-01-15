@@ -9,4 +9,13 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+  		<display-name>MongoServlet</display-name>
+  		<servlet-name>MongoServlet</servlet-name>
+  		<servlet-class>servlets.MongoServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>MongoServlet</servlet-name>
+  		<url-pattern>/MongoServlet</url-pattern>
+  	</servlet-mapping>
 </web-app>

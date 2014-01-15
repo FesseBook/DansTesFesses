@@ -12,8 +12,8 @@ public class Picture {
 	private ObjectId _id;
 	private String _name;
 	private Date _date;
-	private int _authorId;
-	private int _author;
+	private ObjectId _authorId;
+	private String _author;
 	private ArrayList<Integer> _tags;
 	private ArrayList<ObjectId> _friendsTagged;
 	private int _pictureURI;
@@ -38,16 +38,16 @@ public class Picture {
 	public void set_date(Date _date) {
 		this._date = _date;
 	}
-	public int get_authorId() {
+	public ObjectId get_authorId() {
 		return _authorId;
 	}
-	public void set_authorId(int _authorId) {
+	public void set_authorId(ObjectId _authorId) {
 		this._authorId = _authorId;
 	}
-	public int get_author() {
+	public String get_author() {
 		return _author;
 	}
-	public void set_author(int _author) {
+	public void set_author(String _author) {
 		this._author = _author;
 	}
 	public ArrayList<Integer> get_tags() {

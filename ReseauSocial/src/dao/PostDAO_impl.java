@@ -14,43 +14,43 @@ import model.Post;
 
 public class PostDAO_impl implements PostDAO{
 	
-	Datastore userDatastore;
+	Datastore postDatastore;
 	
-	PostDAO_impl(Mongo mongo){
-		Datastore userDatastore = new Morphia().createDatastore(mongo, "Usermanager");
+	public PostDAO_impl(Datastore datastore){
+		postDatastore=datastore;
 	}
 	
 	public void create(Post post) {
-		userDatastore.save(post);
+		postDatastore.save(post);
 	}
 
 	public List<Post> findByAuthor(String _author) {
-		return userDatastore.createQuery(Post.class).field("_author").equal(_author).asList();
+		return postDatastore.createQuery(Post.class).field("_author").equal(_author).asList();
 	}
 	
 	public List<Post> findByAuthorId(String _authorId) {
 		ObjectId obj = new ObjectId(_authorId);
-		return userDatastore.createQuery(Post.class).field("_id").equal(obj).asList();
+		return postDatastore.createQuery(Post.class).field("_id").equal(obj).asList();
 	}
 	
 	public Post findById(String _id) {
 		ObjectId obj = new ObjectId(_id);
-		return userDatastore.createQuery(Post.class).field("_id").equal(obj).get();
+		return postDatastore.createQuery(Post.class).field("_id").equal(obj).get();
 	}
 	
 	public List<Post> findByDate( Date _date) {// gestion de la date a voir
-		return userDatastore.createQuery(Post.class).field("_date").equal(_date).asList();
+		return postDatastore.createQuery(Post.class).field("_date").equal(_date).asList();
 	}
 	
 	public void updateWholeDocument(String _id, Post post) {
 		Post p = findById(_id);
-		userDatastore.delete(p);
-		userDatastore.save(post);
+		postDatastore.delete(p);
+		postDatastore.save(post);
 	}
 	
 	public void delete(String _id) {
 		Post p = findById(_id);
-		userDatastore.delete(p);
+		postDatastore.delete(p);
 	}
 
 	@Override

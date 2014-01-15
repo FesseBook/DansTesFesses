@@ -1,4 +1,4 @@
-	package model;
+package model;
 
 import java.util.*;
 
@@ -15,10 +15,11 @@ public class User {
 	private String _email;  // unique a implementer
 	private String _login;
 	private String _password;
-	private ArrayList<ObjectId> _myPostsAndComment; // store the id of all post the user is involved posting or commenting
+	private ArrayList<ObjectId> _postInvolved; 
 	private ArrayList<ObjectId> _myFriends;
 	private ArrayList<ObjectId> _myPictures;
 	private ArrayList<ObjectId> _myGroups;
+	private ArrayList<ObjectId> _waitingForResponse;
 	
 	
 	public ObjectId get_id() {
@@ -56,10 +57,10 @@ public class User {
 		this._password = _password;
 	}
 	public ArrayList<ObjectId> get_myPostsAndComment() {
-		return _myPostsAndComment;
+		return _postInvolved;
 	}
 	public void set_myPostsAndComment(ArrayList<ObjectId> _myPostsAndComment) {
-		this._myPostsAndComment = _myPostsAndComment;
+		this._postInvolved = _myPostsAndComment;
 	}
 	public ArrayList<ObjectId> get_myFriends() {
 		return _myFriends;
