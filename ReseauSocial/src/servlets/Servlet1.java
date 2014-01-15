@@ -2,6 +2,7 @@ package servlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -12,12 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.Post;
 import model.User;
+import model.UserJSP;
 import dao.EJBGestionPost;
 import dao.EJBGestionUser;
 import dao.UserDAO;
 
 public class Servlet1 extends HttpServlet {
-<<<<<<< HEAD
 
 	@EJB
 	EJBGestionUser gestionnaireUser;
@@ -36,52 +37,50 @@ public class Servlet1 extends HttpServlet {
 			
 		} else if (operation.equals("rechercheUser")) {
 			// Quel(s) user(s) rechercher ?
-			String userRechercher = request.getParameter("aChercher");
+			String userRechercher = request.getParameter("userAChercher");
+			String idUserCourant = request.getParameter("idUserCourant");
+			User userCourant = gestionnaireUser.getUserById(Integer.valueOf(idUserCourant));
 			List<User> usersAAfficher = gestionnaireUser.recherche(userRechercher);
 			request.setAttribute("usersAAfficher", usersAAfficher);
+			request.setAttribute("userCourant", userCourant);
 			request.getRequestDispatcher("AfficherUsers.jsp").forward(request, response);
 			
 		} else if (operation.equals("visiterAmi")) {
 			// RŽcupŽrer l'ami correspondant
-			int idAmi = Integer.valueOf(request.getParameter("idAmiChoisi"));
-			User userAmi = gestionnaireUser.findById(idAmi);
-			List<Post> postsAmi = gestionnairePost.getPostsUnAmi(userAmi);
-			request.setAttribute("postsAAfficher", postsAmi);
-			request.getRequestDispatcher("AfficherPosts.jsp");
+			String idFriend = request.getParameter("idFriend");
+			String idUserCourant = request.getParameter("idUserCourant");
+			User userAmi = gestionnaireUser.findById(Integer.valueOf(idFriend));
+			User userCourant = gestionnaireUser.findById(Integer.valueOf(idUserCourant));
+			boolean areFriends = gestionnaireUser.areFriends(userCourant, userAmi);
+			List<Post> postsAAfficher = new ArrayList<Post>();
+			if (areFriends) {
+				postsAAfficher = gestionnairePost.getMyPosts(userAmi);
+			}
+			List<User> usersAAfficher = gestionnaireUser.getMyFriends(userCourant);
+			request.setAttribute("usersAAfficher", usersAAfficher);
+			request.setAttribute("postsAAfficher", postsAAfficher);
+			request.setAttribute("userCourant", userCourant);
+			request.getRequestDispatcher("AfficherPost.jsp").forward(request, response);
 			
 		} else if (operation.equals("retourMonMur")) {
-			int monId = Integer.valueOf(request.getParameter("monId"));
-			User monUser = gestionnaireUser.findById(monId);
-			List<Post> mesPosts = gestionnairePost.getMyPosts(monUser);
-			request.getRequestDispatcher("AfficherPosts.jsp");
+			String idUserCourant = request.getParameter("idUserCourant");
+			User userCourant = gestionnaireUser.findById(Integer.valueOf(idUserCourant));
+			List<Post> postsAAfficher = gestionnairePost.getMyPosts(userCourant);
+			List<User> usersAAfficher = gestionnaireUser.getMyFriends(userCourant);
+			request.setAttribute("usersAAfficher", usersAAfficher);
+			request.setAttribute("postsAAfficher", postsAAfficher);
+			request.setAttribute("userCourant", userCourant);
+			request.getRequestDispatcher("AfficherPost.jsp").forward(request, response);
 			
 		}
-		
-		
-=======
-//
-//	@EJB
-//	EJBGestionUser gestionnaireUser;
-//	
-	
-	public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
-		
-//		// Savoir quelle opï¿½ration on traite
-//		String operation = request.getParameter("operation");
-//		
-//		if (operation.equals("demandeCreation")) {
-//			// Est ce qu'on ne peut pas plutï¿½t passer directement de la page Accueil.html ï¿½ la page qui sert ï¿½ crï¿½er un compte ?
-//			request.getRequestDispatcher("CreationUser.html").forward(request, response);
-//		}
-//		
-//		
->>>>>>> 0855835561b6072b4a9b1c8ad83756d6bf2550e8
 	}
+		
+		
+
 	
 	
 	public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
 		
-<<<<<<< HEAD
 		// Savoir quelle opŽration on traite
 		String operation = request.getParameter("operation");
 		
@@ -93,66 +92,42 @@ public class Servlet1 extends HttpServlet {
 			// CrŽer le User et le stocker dans la base
 			gestionnaireUser.creerUser(name, email, password);
 			// IL FAUDRA TESTER LE CAS OU LE NOM EST DEJA PRIS PAR UN AUTRE USER
-			List<Post> postsAAfficher = new ArrayList<Post>();
-			User userCourant = 
+			UserJSP userCourant = gestionnaireUser.getUserByEmail(email);
+			List<Post> postsAAfficher = gestionnairePost.getPostsTouslesAmis(userCourant); // normalement, cette liste est vide
+			List<User> usersAAfficher = gestionnaireUser.getMyFriends(userCourant); // normalement, cette liste est vide
+			request.setAttribute("usersAAfficher", usersAAfficher);
 			request.setAttribute("postsAAfficher", postsAAfficher);
+			request.setAttribute("userCourant", userCourant);
 			request.getRequestDispatcher("AfficherPost.jsp").forward(request, response);
 			
 		} else if (operation.equals("authentification")) {
 			// RŽcupŽrer les identifiants du client
-			String login = request.getParameter("login");
+			String email = request.getParameter("email");
 			String password = request.getParameter("password");
 			// Questionner la BD pour savoir si ces identifiants sont valides
-			boolean identifiantsValides = gestionnaireUser.identifiantsValides(login, password);
+			boolean identifiantsValides = gestionnaireUser.emailPasswordValid(email, password);
 			if (identifiantsValides) {
 				// RŽcupŽrer le User correspondant
-				User user = gestionnaireUser.getUserByLogin(login);
-				// RŽcupŽrer la liste des posts de ses amis
-				List<Post> postsAmis = gestionnaireUser.getPostsTouslesAmis(user);
-				request.setAttribute("listePost", postsAmis);
+				User userCourant = gestionnaireUser.getUserByEmail(email);
+				List<Post> postsAAfficher = gestionnairePost.getPostsTouslesAmis(userCourant);
+				List<User> usersAAfficher = gestionnaireUser.getMyFriends(userCourant);
+				request.setAttribute("usersAAfficher", usersAAfficher);
+				request.setAttribute("postsAAfficher", postsAAfficher);
+				request.setAttribute("userCourant", userCourant);
 				request.getRequestDispatcher("AfficherPost.jsp").forward(request, response);
 				
 			} else {
 				// Retourner vers la page d'accueil
+				String messageErreur = "Les identifiants saisis sont mauvais !";
+				request.setAttribute("messageErreur", messageErreur);
 				request.getRequestDispatcher("Accueil.html").forward(request, response);
 			}
+		} else if (operation.equals("publication")) {
+			String body = request.getParameter("body");
+			String idUserCourant = request.getParameter("idUserCourant");
+			User userCourant = gestionnaireUser.findById(Integer.valueOf(idUserCourant));
+			gestionnairePost.creerPost(userCourant, body);
 		}
-=======
-//		// Savoir quelle opï¿½ration on traite
-//		String operation = request.getParameter("operation");
-//		
-//		if (operation.equals("creation")) {
-//			// Rï¿½cupï¿½rer les informations du futur User
-//			String name = request.getParameter("name");
-//			String email = request.getParameter("email");
-//			String password = request.getParameter("password");
-//			// Crï¿½er le User et le stocker dans la base
-//			gestionnaireUser.creerUser(name, email, password);
-//			// IL FAUDRA TESTER LE CAS OU LE NOM EST DEJA PRIS PAR UN AUTRE USER
-//			
-//		} else if (operation.equals("authentification")) {
-//			// Rï¿½cupï¿½rer les identifiants du client
-//			String login = request.getParameter("login");
-//			String password = request.getParameter("password");
-//			// Questionner la BD pour savoir si ces identifiants sont valides
-//			boolean identifiantsValides = gestionnaireUser.identifiantsValides(login, password);
-//			if (identifiantsValides) {
-//				// Rï¿½cupï¿½rer le User correspondant
-//				User user = gestionnaireUser.getUserByLogin(login);
-//				// Rï¿½cupï¿½rer la liste des posts de ses amis
-//				List<Post> postsAmis = gestionnaireUser.getPostsAmis(user);
-//				request.setAttribute("listePost", postsAmis);
-//				request.getRequestDispatcher("AfficherPost.jsp").forward(request, response);
-//				
-//			} else {
-//				// Retourner vers la page d'accueil
-//				request.getRequestDispatcher("Accueil.html").forward(request, response);
-//			}
-//		} else if (operation.equals("visiterAmi")) {
-//			// Rï¿½cupï¿½rer l'ami correspondant
-//			int idAmi = Integer.valueOf(request.getParameter("idAmiChoisi"));
-//			User userAmi = gestionnaireUser.findById(idAmi);
-//		}
->>>>>>> 0855835561b6072b4a9b1c8ad83756d6bf2550e8
 	}
+
 }

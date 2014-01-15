@@ -9,12 +9,13 @@ import org.bson.types.ObjectId;
 
 import model.Post;
 import model.User;
+import model.UserJSP;
 
 @Stateless
 public class EJBGestionUser {
 	
-	private UserDAO_impl userDAO;
-	private PostDAO_impl postDAO;
+	private UserDAO userDAO;
+	private PostDAO postDAO;
 	
 	public void creerUser(String name, String email, String password) {
 		User user = new User();
@@ -24,22 +25,22 @@ public class EJBGestionUser {
 		userDAO.create(user);
 	}
 	
-<<<<<<< HEAD
-	public User getUserByLogin(String login) {
-		return userDAO.findOneByLogin(login);
+	public UserJSP getUserByEmail(String email) {
+		// TO DO !!!
+		return null;
+		//return userDAO.findByEmail(email);
 	}
 	
-	public User getUserByEmail(String email) {
-		return userDAO.findByEmail(email);
+	public UserJSP getUserById(String id) {
+		
 	}
 	
-	public boolean identifiantsValides(String login, String password) {
-		return userDAO.identifiantsValides(login, password);
+	public User getUserById(int id) {
+		return userDAO.findOneById(id);
 	}
 	
-	public List<Post> getPostsTouslesAmis(User user) {
-		ArrayList<ObjectId> amisIds = user.get_myFriends();
-		return postDAO.getPostsUsers(amisIds);
+	public boolean emailPasswordValid(String email, String password) {
+		return userDAO.emailPasswordValid(email, password);
 	}
 	
 	public User findById(int id) {
@@ -56,23 +57,14 @@ public class EJBGestionUser {
 		}
 		return retour;
 	}
+	
+	public List<User> getMyFriends(User user) {
+		int userId = Integer.valueOf(user.get_id().toString());
+		return userDAO.findByFriends(userId);
+	}
+	
+	public boolean areFriends(User userCourant, User userCourantFriend) {
+		return userDAO.areFriends(userCourant.get_id(), userCourantFriend.get_id()); // fonction qui est dans UserDAO_impl mais pas encore dans UserDAO
+	}
 
-=======
-//	public User getUserByLogin(String login) {
-//		return userDAO.findOneByLogin(login);
-//	}
-//	
-//	public boolean identifiantsValides(String login, String password) {
-//		return userDAO.identifiantsValides(login, password);
-//	}
-//	
-//	public List<Post> getPostsAmis(User user) {
-//		ArrayList<ObjectId> amisIds = user.get_myFriends();
-//		return postDAO.getPostsUsers(amisIds);
-//	}
-//	
-//	public User findById(int id) {
-//		return userDAO.findOneById(id);
-//	}
->>>>>>> 0855835561b6072b4a9b1c8ad83756d6bf2550e8
 }
