@@ -13,8 +13,8 @@ import model.User;
 @Stateless
 public class EJBGestionUser {
 	
-	private UserDAO userDAO;
-	private PostDAO postDAO;
+	private UserDAO_impl userDAO;
+	private PostDAO_impl postDAO;
 	
 	public void creerUser(String name, String email, String password) {
 		User user = new User();
@@ -24,20 +24,20 @@ public class EJBGestionUser {
 		userDAO.create(user);
 	}
 	
-	public User getUserByLogin(String login) {
-		return userDAO.findOneByLogin(login);
-	}
-	
-	public boolean identifiantsValides(String login, String password) {
-		return userDAO.identifiantsValides(login, password);
-	}
-	
-	public List<Post> getPostsAmis(User user) {
-		ArrayList<ObjectId> amisIds = user.get_myFriends();
-		return postDAO.getPostsUsers(amisIds);
-	}
-	
-	public User findById(int id) {
-		return userDAO.findOneById(id);
-	}
+//	public User getUserByLogin(String login) {
+//		return userDAO.findOneByLogin(login);
+//	}
+//	
+//	public boolean identifiantsValides(String login, String password) {
+//		return userDAO.identifiantsValides(login, password);
+//	}
+//	
+//	public List<Post> getPostsAmis(User user) {
+//		ArrayList<ObjectId> amisIds = user.get_myFriends();
+//		return postDAO.getPostsUsers(amisIds);
+//	}
+//	
+//	public User findById(int id) {
+//		return userDAO.findOneById(id);
+//	}
 }

@@ -1,4 +1,4 @@
-package test;
+package servlets;
 
 import java.io.IOException;
 import java.net.UnknownHostException;
@@ -19,8 +19,7 @@ import dao.UserDAO_impl;
 public class MongoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	ManagerDAO man;
-	
+	CompletionBase cmplB;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -32,7 +31,9 @@ public class MongoServlet extends HttpServlet {
     
     public void init(ServletConfig config){
     	 try {
-			man = new ManagerDAO();
+//    		 System.out.println("BeforeCompletionBase");
+//			cmplB = new CompletionBase();
+//			System.out.println("CompletionBase");
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -47,7 +48,7 @@ public class MongoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		UserDAO_impl userDao = new UserDAO_impl(man.datastore) ;
+		
 	}
 
 	/**

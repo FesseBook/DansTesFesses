@@ -1,4 +1,4 @@
-package test;
+package servlets;
 
 import java.net.UnknownHostException;
 import java.util.ArrayList;
