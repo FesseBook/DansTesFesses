@@ -24,49 +24,20 @@ public class EJBGestionUser {
 		userDAO.create(user);
 	}
 	
-<<<<<<< HEAD
-	public User getUserByLogin(String login) {
-		return userDAO.findOneByLogin(login);
-	}
-	
-	public User getUserByEmail(String email) {
-		return userDAO.findByEmail(email);
-	}
-	
-	public boolean identifiantsValides(String login, String password) {
-		return userDAO.identifiantsValides(login, password);
-	}
-	
-	public List<Post> getPostsTouslesAmis(User user) {
-		ArrayList<ObjectId> amisIds = user.get_myFriends();
-		return postDAO.getPostsUsers(amisIds);
-	}
-	
-	public User findById(int id) {
-		return userDAO.findOneById(id);
-	}
-	
-	public List<User> recherche(String champRecherche) {
-		List<User> retour = null;
-		if (champRecherche.isEmpty()) {
-			retour = userDAO.findUsers();
-		} else {
-			retour = new ArrayList<User>();
-			retour.add(userDAO.findOneByLogin(champRecherche));
-		}
-		return retour;
-	}
-
-=======
+//<<<<<<< HEAD
 //	public User getUserByLogin(String login) {
 //		return userDAO.findOneByLogin(login);
+//	}
+//	
+//	public User getUserByEmail(String email) {
+//		return userDAO.findByEmail(email);
 //	}
 //	
 //	public boolean identifiantsValides(String login, String password) {
 //		return userDAO.identifiantsValides(login, password);
 //	}
 //	
-//	public List<Post> getPostsAmis(User user) {
+//	public List<Post> getPostsTouslesAmis(User user) {
 //		ArrayList<ObjectId> amisIds = user.get_myFriends();
 //		return postDAO.getPostsUsers(amisIds);
 //	}
@@ -74,5 +45,17 @@ public class EJBGestionUser {
 //	public User findById(int id) {
 //		return userDAO.findOneById(id);
 //	}
->>>>>>> 0855835561b6072b4a9b1c8ad83756d6bf2550e8
+//	
+//	public List<User> recherche(String champRecherche) {
+//		List<User> retour = null;
+//		if (champRecherche.isEmpty()) {
+//			retour = userDAO.findUsers();
+//		} else {
+//			retour = new ArrayList<User>();
+//			retour.add(userDAO.findOneByLogin(champRecherche));
+//		}
+//		return retour;
+//	}
+
+
 }

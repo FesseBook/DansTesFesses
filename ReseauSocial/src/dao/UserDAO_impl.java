@@ -9,6 +9,7 @@ import com.google.code.morphia.Morphia;
 import com.mongodb.Mongo;
 
 import model.Group;
+import model.Post;
 import model.User;
 
 public class UserDAO_impl implements UserDAO {
@@ -164,19 +165,82 @@ public class UserDAO_impl implements UserDAO {
 	// ///////////////////
 
 	public boolean areFiends(ObjectId objId, ObjectId friendId) {
-		return userDatastore.createQuery(User.class).and(
-				userDatastore.createQuery(User.class).criteria("_id")
-						.equal(objId),
-				userDatastore.createQuery(User.class).criteria("_myFriends")
-						.hasThisElement(friendId)) != null;
+		return (userDatastore.createQuery(User.class).filter("_id",objId)
+				.field("_myFriends").hasThisElement(friendId)) != null;
 	}
 
-	// ///////////////// Tous les updates qui nous interessent A voir
-	// ///////////////////////
-	public int update(int id, User user) {
-		return 0;
-	};
+	public boolean emailPasswordValid(String email, String password) {
+		return (userDatastore.createQuery(User.class).filter("_email", email)
+				.filter("_password", password)) != null;
+	}
+	
 
+	
+
+	
+	public void updateWholeDocument(String _id, User user) {
+		User p = findById(_id);
+		user.set_id(p.get_id());
+		userDatastore.delete(p);
+		userDatastore.save(user);
+	}
+	
+	public void updateWholeDocument(ObjectId _id, User user) {
+		User p = findById(_id);
+		user.set_id(p.get_id());
+		userDatastore.delete(p);
+		userDatastore.save(user);
+	}
+	/////////////////////////////////////////////////////////////
+	
+	public void addFriend (ObjectId whoAccepted, ObjectId whoAsked){
+		userDatastore.update(this.findById(whoAccepted), userDatastore.createUpdateOperations(User.class).add("_myFriends", whoAsked));
+		userDatastore.update(this.findById(whoAsked), userDatastore.createUpdateOperations(User.class).add("_myFriends", whoAccepted));
+		userDatastore.update(this.findById(whoAccepted), userDatastore.createUpdateOperations(User.class).removeAll("_waitingForYourFriendshipResponse",whoAsked));
+		userDatastore.update(this.findById(whoAsked), userDatastore.createUpdateOperations(User.class).removeAll("_responsesYouAreWaitingFor",whoAccepted));
+		
+	}
+	
+	public void deleteFriend (ObjectId user1, ObjectId user2){
+		userDatastore.update(this.findById(user1), userDatastore.createUpdateOperations(User.class).removeAll("_myFriends",user2));
+		userDatastore.update(this.findById(user2), userDatastore.createUpdateOperations(User.class).removeAll("_myFriends",user1));
+		
+	}
+	
+	public void refuseFriend(ObjectId whoRefused, ObjectId whoAsked){
+		userDatastore.update(this.findById(whoRefused), userDatastore.createUpdateOperations(User.class).removeAll("_waitingForYourFriendshipResponse",whoAsked));
+		userDatastore.update(this.findById(whoAsked), userDatastore.createUpdateOperations(User.class).removeAll("_responsesYouAreWaitingFor",whoRefused));
+		
+	}
+	////////////////////////////////////////////////////////
+	public void addPostInvolvedIn( ObjectId userId, ObjectId postId){
+		userDatastore.update(this.findById(userId), userDatastore.createUpdateOperations(User.class).add("_postInvolved", postId));
+	}
+	public void deletePostInvolvedIn( ObjectId userId, ObjectId postId){
+		userDatastore.update(this.findById(userId), userDatastore.createUpdateOperations(User.class).removeAll("_postInvolved", postId));
+	}
+	
+	////////////////////////////////////////////////////////
+	
+	public void  addGroupToUser(ObjectId userId, ObjectId groupId){
+		userDatastore.update(this.findById(userId), userDatastore.createUpdateOperations(User.class).add("_myGroups", groupId));
+	}
+	public void deleteGroupFromUser( ObjectId userId, ObjectId groupId){
+		userDatastore.update(this.findById(userId), userDatastore.createUpdateOperations(User.class).removeAll("_myGroups", groupId));
+	}
+		
+	////////////////////////////////////////////////////////
+	
+	public void  addPictureToUser(ObjectId userId, ObjectId pictureId){
+		userDatastore.update(this.findById(userId), userDatastore.createUpdateOperations(User.class).add("_myPictures", pictureId));
+	}
+	public void deletePictureFromUser( ObjectId userId, ObjectId pictureId){
+		userDatastore.update(this.findById(userId), userDatastore.createUpdateOperations(User.class).removeAll("_myPictures", pictureId));
+	}
+	
+	
+	
+	
 	// ////////////////////// TO DO ////////////////////////////////
 	/*
 	 *

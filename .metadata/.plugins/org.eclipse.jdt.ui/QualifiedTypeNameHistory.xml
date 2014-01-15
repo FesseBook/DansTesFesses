@@ -1,2 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.google.code.morphia.Datastore"/>
+<fullyQualifiedTypeName name="model.Post"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="dao.PostDAO_impl"/>
+<fullyQualifiedTypeName name="servlets.CompletionBase"/>
+<fullyQualifiedTypeName name="model.Comment"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="org.bson.types.ObjectId"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="test.ManagerDAO"/>
+</qualifiedTypeNameHistroy>
