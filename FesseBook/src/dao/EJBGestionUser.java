@@ -28,15 +28,11 @@ public class EJBGestionUser {
 		return userDAO.findOneByLogin(login);
 	}
 	
-	public User getUserByEmail(String email) {
-		return userDAO.findByEmail(email);
-	}
-	
 	public boolean identifiantsValides(String login, String password) {
 		return userDAO.identifiantsValides(login, password);
 	}
 	
-	public List<Post> getPostsTouslesAmis(User user) {
+	public List<Post> getPostsAmis(User user) {
 		ArrayList<ObjectId> amisIds = user.get_myFriends();
 		return postDAO.getPostsUsers(amisIds);
 	}
@@ -44,16 +40,4 @@ public class EJBGestionUser {
 	public User findById(int id) {
 		return userDAO.findOneById(id);
 	}
-	
-	public List<User> recherche(String champRecherche) {
-		List<User> retour = null;
-		if (champRecherche.isEmpty()) {
-			retour = userDAO.findUsers();
-		} else {
-			retour = new ArrayList<User>();
-			retour.add(userDAO.findOneByLogin(champRecherche));
-		}
-		return retour;
-	}
-
 }

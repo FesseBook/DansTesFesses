@@ -1,10 +1,7 @@
 package dao;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import org.bson.types.ObjectId;
 
 import model.Post;
 
@@ -29,9 +26,5 @@ public interface PostDAO {
 	public void updateWholeDocument(int _id, Post post);
 	
 	public void delete(String _id);
-	
-	public List<Post> getPostsUsers(List<ObjectId> amisId);
-	
-	public List<Post> getPostsUnAmi(ObjectId id);
 		
 }

@@ -1,11 +1,7 @@
 package dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import org.bson.types.ObjectId;
-
-import model.Post;
 import model.User;
 
 public interface UserDAO {
@@ -26,7 +22,5 @@ public interface UserDAO {
 	public int update(int id, User user);
 	
 	public int delete( /* id ?*/);
-	
-	public boolean identifiantsValides(String login, String password);
 
 }

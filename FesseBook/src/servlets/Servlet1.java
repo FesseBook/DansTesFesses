@@ -1,7 +1,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -12,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.Post;
 import model.User;
-import dao.EJBGestionPost;
 import dao.EJBGestionUser;
 import dao.UserDAO;
 
@@ -21,9 +19,6 @@ public class Servlet1 extends HttpServlet {
 	@EJB
 	EJBGestionUser gestionnaireUser;
 	
-	@EJB
-	EJBGestionPost gestionnairePost;
-	
 	
 	public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
 		
@@ -31,29 +26,8 @@ public class Servlet1 extends HttpServlet {
 		String operation = request.getParameter("operation");
 		
 		if (operation.equals("demandeCreation")) {
+			// Est ce qu'on ne peut pas plutôt passer directement de la page Accueil.html à la page qui sert à créer un compte ?
 			request.getRequestDispatcher("CreationUser.html").forward(request, response);
-			
-		} else if (operation.equals("rechercheUser")) {
-			// Quel(s) user(s) rechercher ?
-			String userRechercher = request.getParameter("aChercher");
-			List<User> usersAAfficher = gestionnaireUser.recherche(userRechercher);
-			request.setAttribute("usersAAfficher", usersAAfficher);
-			request.getRequestDispatcher("AfficherUsers.jsp").forward(request, response);
-			
-		} else if (operation.equals("visiterAmi")) {
-			// Récupérer l'ami correspondant
-			int idAmi = Integer.valueOf(request.getParameter("idAmiChoisi"));
-			User userAmi = gestionnaireUser.findById(idAmi);
-			List<Post> postsAmi = gestionnairePost.getPostsUnAmi(userAmi);
-			request.setAttribute("postsAAfficher", postsAmi);
-			request.getRequestDispatcher("AfficherPosts.jsp");
-			
-		} else if (operation.equals("retourMonMur")) {
-			int monId = Integer.valueOf(request.getParameter("monId"));
-			User monUser = gestionnaireUser.findById(monId);
-			List<Post> mesPosts = gestionnairePost.getMyPosts(monUser);
-			request.getRequestDispatcher("AfficherPosts.jsp");
-			
 		}
 		
 		
@@ -73,10 +47,6 @@ public class Servlet1 extends HttpServlet {
 			// Créer le User et le stocker dans la base
 			gestionnaireUser.creerUser(name, email, password);
 			// IL FAUDRA TESTER LE CAS OU LE NOM EST DEJA PRIS PAR UN AUTRE USER
-			List<Post> postsAAfficher = new ArrayList<Post>();
-			User userCourant = 
-			request.setAttribute("postsAAfficher", postsAAfficher);
-			request.getRequestDispatcher("AfficherPost.jsp").forward(request, response);
 			
 		} else if (operation.equals("authentification")) {
 			// Récupérer les identifiants du client
@@ -88,7 +58,7 @@ public class Servlet1 extends HttpServlet {
 				// Récupérer le User correspondant
 				User user = gestionnaireUser.getUserByLogin(login);
 				// Récupérer la liste des posts de ses amis
-				List<Post> postsAmis = gestionnaireUser.getPostsTouslesAmis(user);
+				List<Post> postsAmis = gestionnaireUser.getPostsAmis(user);
 				request.setAttribute("listePost", postsAmis);
 				request.getRequestDispatcher("AfficherPost.jsp").forward(request, response);
 				
@@ -96,6 +66,10 @@ public class Servlet1 extends HttpServlet {
 				// Retourner vers la page d'accueil
 				request.getRequestDispatcher("Accueil.html").forward(request, response);
 			}
+		} else if (operation.equals("visiterAmi")) {
+			// Récupérer l'ami correspondant
+			int idAmi = Integer.valueOf(request.getParameter("idAmiChoisi"));
+			User userAmi = gestionnaireUser.findById(idAmi);
 		}
 	}
 }
