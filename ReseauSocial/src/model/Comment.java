@@ -1,22 +1,25 @@
 package model;
 
 import java.util.Date;
+
+import org.bson.types.ObjectId;
+
 import com.google.code.morphia.annotations.*;
 
 @Embedded
 public class Comment {
 	
-	private int _authorId;
+	private ObjectId _authorId;
 	private String _author;
 	private String _body;
 	private Date _date;
 	private int _likes;
 	
 	
-	public int get_authorId() {
+	public ObjectId get_authorId() {
 		return _authorId;
 	}
-	public void set_authorId(int _authorId) {
+	public void set_authorId(ObjectId _authorId) {
 		this._authorId = _authorId;
 	}
 	public String get_author() {
