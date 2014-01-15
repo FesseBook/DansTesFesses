@@ -19,11 +19,16 @@ public class User {
 	private ArrayList<ObjectId> _myFriends;
 	private ArrayList<ObjectId> _myPictures;
 	private ArrayList<ObjectId> _myGroups;
-	private ArrayList<ObjectId> _waitingForResponse;
+	private ArrayList<ObjectId> _waitingForYourFriendshipResponse;
+	private ArrayList<ObjectId> _responsesYouAreWaitingFor;
 	
 	
 	public ObjectId get_id() {
 		return _id;
+	}
+	
+	public void set_id(ObjectId id){
+		this._id = id;
 	}
 
 	public String get_surname() {
@@ -79,6 +84,32 @@ public class User {
 	}
 	public void set_myGroups(ArrayList<ObjectId> _myGroups) {
 		this._myGroups = _myGroups;
+	}
+
+	public ArrayList<ObjectId> get_postInvolved() {
+		return _postInvolved;
+	}
+
+	public void set_postInvolved(ArrayList<ObjectId> _postInvolved) {
+		this._postInvolved = _postInvolved;
+	}
+
+	public ArrayList<ObjectId> get_waitingForYourFriendshipResponse() {
+		return _waitingForYourFriendshipResponse;
+	}
+
+	public void set_waitingForYourFriendshipResponse(
+			ArrayList<ObjectId> _waitingForYourFriendshipResponse) {
+		this._waitingForYourFriendshipResponse = _waitingForYourFriendshipResponse;
+	}
+
+	public ArrayList<ObjectId> get_responsesYouAreWaitingFor() {
+		return _responsesYouAreWaitingFor;
+	}
+
+	public void set_responsesYouAreWaitingFor(
+			ArrayList<ObjectId> _responsesYouAreWaitingFor) {
+		this._responsesYouAreWaitingFor = _responsesYouAreWaitingFor;
 	}
 	
 	

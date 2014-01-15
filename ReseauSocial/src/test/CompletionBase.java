@@ -1,4 +1,4 @@
-package servlets;
+package test;
 
 import java.net.UnknownHostException;
 import java.util.ArrayList;
@@ -21,8 +21,9 @@ public class CompletionBase {
 	
 	Datastore testDatastore;
 	
-public CompletionBase() throws UnknownHostException{
-	
+public CompletionBase() {
+};
+public void init()throws UnknownHostException{
 	Morphia morphia = new Morphia();
 	morphia.mapPackage("model");
 	MongoClientOptions.Builder builder = new MongoClientOptions.Builder().alwaysUseMBeans(true);
@@ -56,8 +57,8 @@ PostDAO_impl postDao= new PostDAO_impl(testDatastore);
 
 			User user = new User();
 			user.set_surname(surname);
-			user.set_name(str[randomN]);
-			user.set_login(name);
+			user.set_name(name);
+			user.set_login(surname+"."+name);
 			user.set_email(surname + "." + name + "@book");
 			user.set_password(surname + "." + name);
 

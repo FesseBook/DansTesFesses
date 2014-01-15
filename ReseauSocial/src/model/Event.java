@@ -22,6 +22,9 @@ public class Event {
 	public ObjectId get_id() {
 		return _id;
 	}
+	public void set_id(ObjectId id){
+		this._id = id;
+	}
 
 	public String get_name() {
 		return _name;

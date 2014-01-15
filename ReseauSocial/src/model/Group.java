@@ -21,7 +21,9 @@ public class Group {
 	public ObjectId get_id() {
 		return _id;
 	}
-	
+	public void set_id(ObjectId id){
+		this._id = id;
+	}
 	
 	public String get_name() {
 		return _name;
@@ -58,6 +60,18 @@ public class Group {
 	}
 	public void set_adminId(ArrayList<ObjectId> _adminId) {
 		this._adminsId = _adminId;
+	}
+	public ArrayList<ObjectId> get_adminsId() {
+		return _adminsId;
+	}
+	public void set_adminsId(ArrayList<ObjectId> _adminsId) {
+		this._adminsId = _adminsId;
+	}
+	public ArrayList<ObjectId> get_waitingForResponse() {
+		return _waitingForResponse;
+	}
+	public void set_waitingForResponse(ArrayList<ObjectId> _waitingForResponse) {
+		this._waitingForResponse = _waitingForResponse;
 	}
 
 

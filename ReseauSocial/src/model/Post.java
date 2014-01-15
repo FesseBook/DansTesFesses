@@ -10,18 +10,36 @@ import com.google.code.morphia.annotations.*;
 public class Post {
 	@Id
 	private ObjectId _id;
+	
 	private ObjectId _authorId;
+	
 	private String _author;
+	
 	private Date _date;
+	
 	private String _body;
 	
 	@Embedded
 	private ArrayList<Comment> _comments;
+	
 	private int _likes;
+	
 	private ArrayList<String> _tags;
+	
+	private String _postedOnType;
+	
+	private ObjectId _postedOnId;
+	
+	
+	
+	
+	
 	
 	public ObjectId get_id() {
 		return _id;
+	}
+	public void set_id(ObjectId id){
+		this._id = id;
 	}
 
 	public ObjectId get_authorId() {
@@ -65,6 +83,18 @@ public class Post {
 	}
 	public void set_tags(ArrayList<String> _tags) {
 		this._tags = _tags;
+	}
+	public String get_postedOnType() {
+		return _postedOnType;
+	}
+	public void set_postedOnType(String _postedOnType) {
+		this._postedOnType = _postedOnType;
+	}
+	public ObjectId get_postedOnId() {
+		return _postedOnId;
+	}
+	public void set_postedOnId(ObjectId _postedOnId) {
+		this._postedOnId = _postedOnId;
 	}
 	
 	

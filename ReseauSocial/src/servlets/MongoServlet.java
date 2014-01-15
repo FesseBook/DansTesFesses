@@ -8,6 +8,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import test.CompletionBase;
+import test.ManagerDAO;
+
 import com.mongodb.*;
 import com.google.code.morphia.Morphia;
 
@@ -30,14 +34,43 @@ public class MongoServlet extends HttpServlet {
 
     
     public void init(ServletConfig config){
-    	 try {
+    	
+    	
+    	////////////////// Completion de la base /////////////////////
+//    	 try {
+//    		 cmplB = new CompletionBase();
 //    		 System.out.println("BeforeCompletionBase");
-//			cmplB = new CompletionBase();
+//    			cmplB.init();
 //			System.out.println("CompletionBase");
+//		} catch (UnknownHostException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+    	
+    	
+    	ManagerDAO man;
+//		try {
+//			man = new ManagerDAO();
+//			man.initTest1();
+//		} catch (UnknownHostException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
+		
+		try {
+			man = new ManagerDAO();
+			man.initTest2();
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+    	
+    	
+    	
+    	
+    	
+    	
     	
     	
     	
