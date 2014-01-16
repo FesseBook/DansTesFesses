@@ -32,7 +32,7 @@ public void init()throws UnknownHostException{
 
 	
 
-UserDAO_impl usrDao= new UserDAO_impl(testDatastore);
+UserDAO_impl userDao= new UserDAO_impl(testDatastore);
 
 PostDAO_impl postDao= new PostDAO_impl(testDatastore);
 
@@ -62,10 +62,10 @@ PostDAO_impl postDao= new PostDAO_impl(testDatastore);
 			user.set_email(surname + "." + name + "@book");
 			user.set_password(surname + "." + name);
 
-			usrDao.create(user);
+			userDao.create(user);
 		}
 	
-	List<User> userlist = usrDao.findUsers();
+	List<User> userlist = userDao.findUsers();
 	int length2 =userlist.size();
 	int randomUser;
 	for (int i = 0; i < 100; i++) {
@@ -77,6 +77,8 @@ PostDAO_impl postDao= new PostDAO_impl(testDatastore);
 		post.set_author(user.get_login());
 		post.set_authorId(user.get_id());
 		post.set_date(new Date());
+		post.set_postedOnId(user.get_id());
+		post.set_postedOnType("_user");
 		post.set_comments(new ArrayList<Comment>());
 		
 				
@@ -89,6 +91,8 @@ PostDAO_impl postDao= new PostDAO_impl(testDatastore);
 		post.set_body(s);
 		
 		postDao.create(post);
+		post = postDao.findPostedOnDateDscWithLimit("_user", user.get_id(), 1);
+		userDao.addPostInvolvedIn(user.get_id(), post.get_id());
 		
 		
 	}

@@ -41,6 +41,12 @@ public class PostDAO_impl implements PostDAO {
 				.filter("_postedOnType", wallEntityType)
 				.filter("_postedOnId", id).order("-_date").asList();
 	}
+	
+	public Post findPostedOnDateDscWithLimit(String wallEntityType, ObjectId id, int limit) {
+		return postDatastore.createQuery(Post.class)
+				.filter("_postedOnType", wallEntityType)
+				.filter("_postedOnId", id).order("-_date").limit(limit).get();
+	}
 
 	public List<Post> findByAuthorId(ObjectId _authorId) {
 		return postDatastore.createQuery(Post.class).field("_authorId")
