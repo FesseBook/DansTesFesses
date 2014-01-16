@@ -89,10 +89,15 @@ PostDAO_impl postDao= new PostDAO_impl(testDatastore);
 		+"pharetra non et neque. Ut vitae arcu metus. Curabitur convallis"
 		+"eu magna eget vestibulum. Sed bibendum porttitor ante a lacinia. Mauris"; 
 		post.set_body(s);
-		
+		System.out.print("\n  ajout d un post en base \n");
 		postDao.create(post);
+		System.out.print("\n  post ajouté en base \n");
 		post = postDao.findPostedOnDateDscWithLimit("_user", user.get_id(), 1);
+		System.out.print("\n  post trouvé en base  \n");
 		userDao.addPostInvolvedIn(user.get_id(), post.get_id());
+		System.out.print("\n  user mis à jour \n");
+		System.out.print("=============================== \n =====================");
+		
 		
 		
 	}

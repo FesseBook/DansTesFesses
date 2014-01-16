@@ -37,15 +37,15 @@ public class MongoServlet extends HttpServlet {
     	
     	
     	////////////////// Completion de la base /////////////////////
-//    	 try {
-//    		 cmplB = new CompletionBase();
-//    		 System.out.println("BeforeCompletionBase");
-//    			cmplB.init();
-//			System.out.println("CompletionBase");
-//		} catch (UnknownHostException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+    	 try {
+    		 cmplB = new CompletionBase();
+    		 System.out.println("BeforeCompletionBase");
+    			cmplB.init();
+			System.out.println("CompletionBase");
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	
     	
     	ManagerDAO man;
@@ -58,13 +58,13 @@ public class MongoServlet extends HttpServlet {
 //		}
 		
 		
-		try {
-			man = new ManagerDAO();
-			man.initTest2();
-		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			man = new ManagerDAO();
+//			man.initTest2();
+//		} catch (UnknownHostException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
     	
     	
     	
