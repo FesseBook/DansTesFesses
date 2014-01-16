@@ -29,25 +29,11 @@ public class EJBGestionPost {
 		return postDAO.findByAuthorId(authorId);
 	}
 	
-	public List<PostJSP> getPostsTouslesAmis(UserJSP user) {
-		List<UserJSPSansAmis> amis = user.getAmis();
-		for (UserJSPSansAmis ami : amis) {
-			
-		}
-		ArrayList<ObjectId> amisObjectIds = user.getAmis();
-		List<Post> posts = postDAO.getPostsUsers(amisIds);
-		List<PostJSP> retour = new ArrayList<PostJSP>();
-		for (Post p : posts) {
-			UserJSPSansAmis auteur = new UserJSPSansAmis();
-			auteur.setId(p.get_authorId().toString());
-			User user = userDAO.findOneById(p.get_authorId().toString()); // userDAO ˆ changer
-			auteur.setNom(user.get_name());
-			auteur.setPrenom(user.get_surname());
-			PostJSP pJSP = new PostJSP();
-			pJSP.setAuteur(auteur);
-			pJSP.setBody(p.get_body());
-			pJSP.setId(p.get_authorId().toString());
-			retour.add(pJSP);
+	public List<Post> getPostsTouslesAmis(User user) {
+		List<ObjectId> idAmis = user.get_myFriends();
+		List<Post> retour = null;
+		if (! idAmis.isEmpty()) {
+			retour = postDAO.findByAuthorIdsDateDsc(idAmis);
 		}
 		return retour;
 	}
