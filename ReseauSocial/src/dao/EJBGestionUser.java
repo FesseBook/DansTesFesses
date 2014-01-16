@@ -9,7 +9,6 @@ import org.bson.types.ObjectId;
 
 import model.Post;
 import model.User;
-import model.UserJSP;
 
 @Stateless
 public class EJBGestionUser {
@@ -25,26 +24,16 @@ public class EJBGestionUser {
 		userDAO.create(user);
 	}
 	
-	public UserJSP getUserByEmail(String email) {
-		// TO DO !!!
-		return null;
-		//return userDAO.findByEmail(email);
+	public User getUserByEmail(String email) {
+		return userDAO.findByEmail(email);
 	}
 	
-	public UserJSP getUserById(String id) {
-		
-	}
-	
-	public User getUserById(int id) {
-		return userDAO.findOneById(id);
+	public User getUserById(String id) {
+		return userDAO.findById(id);
 	}
 	
 	public boolean emailPasswordValid(String email, String password) {
 		return userDAO.emailPasswordValid(email, password);
-	}
-	
-	public User findById(int id) {
-		return userDAO.findOneById(id);
 	}
 	
 	public List<User> recherche(String champRecherche) {
@@ -52,8 +41,7 @@ public class EJBGestionUser {
 		if (champRecherche.isEmpty()) {
 			retour = userDAO.findUsers();
 		} else {
-			retour = new ArrayList<User>();
-			retour.add(userDAO.findOneByLogin(champRecherche));
+			retour.add(userDAO.findByLogin(champRecherche));
 		}
 		return retour;
 	}

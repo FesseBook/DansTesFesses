@@ -40,9 +40,11 @@ public class Servlet1 extends HttpServlet {
 			// Quel(s) user(s) rechercher ?
 			String userRechercher = request.getParameter("userAChercher");
 			String idUserCourant = request.getParameter("idUserCourant");
-			User userCourant = gestionnaireUser.getUserById(Integer.valueOf(idUserCourant));
-			List<User> usersAAfficher = gestionnaireUser.recherche(userRechercher);
+			User userCourant = gestionnaireUser.getUserById(idUserCourant);
+			List<User> usersAmis = gestionnaireUser.recherche(userRechercher);
+			List<User> usersAAfficher = gestionnaireUser.getMyFriends(userCourant);
 			request.setAttribute("usersAAfficher", usersAAfficher);
+			request.setAttribute("usersAmis", usersAmis);
 			request.setAttribute("userCourant", userCourant);
 			request.getRequestDispatcher("AfficherUsers.jsp").forward(request, response);
 			
@@ -50,22 +52,23 @@ public class Servlet1 extends HttpServlet {
 			// Récupérer l'ami correspondant
 			String idFriend = request.getParameter("idFriend");
 			String idUserCourant = request.getParameter("idUserCourant");
-			User userAmi = gestionnaireUser.findById(Integer.valueOf(idFriend));
-			User userCourant = gestionnaireUser.findById(Integer.valueOf(idUserCourant));
+			User userAmi = gestionnaireUser.getUserById(idFriend);
+			User userCourant = gestionnaireUser.getUserById(idUserCourant);
 			boolean areFriends = gestionnaireUser.areFriends(userCourant, userAmi);
 			List<Post> postsAAfficher = new ArrayList<Post>();
 			if (areFriends) {
 				postsAAfficher = gestionnairePost.getMyPosts(userAmi);
 			}
-			List<User> usersAAfficher = gestionnaireUser.getMyFriends(userCourant);
+			List<User> usersAAfficher = gestionnaireUser.getMyFriends(userAmi);
 			request.setAttribute("usersAAfficher", usersAAfficher);
 			request.setAttribute("postsAAfficher", postsAAfficher);
 			request.setAttribute("userCourant", userCourant);
+			request.setAttribute("userAmi", userAmi);
 			request.getRequestDispatcher("AfficherPost.jsp").forward(request, response);
 			
 		} else if (operation.equals("retourMonMur")) {
 			String idUserCourant = request.getParameter("idUserCourant");
-			User userCourant = gestionnaireUser.findById(Integer.valueOf(idUserCourant));
+			User userCourant = gestionnaireUser.getUserById(idUserCourant);
 			List<Post> postsAAfficher = gestionnairePost.getMyPosts(userCourant);
 			List<User> usersAAfficher = gestionnaireUser.getMyFriends(userCourant);
 			request.setAttribute("usersAAfficher", usersAAfficher);
@@ -93,8 +96,7 @@ public class Servlet1 extends HttpServlet {
 			// Créer le User et le stocker dans la base
 			gestionnaireUser.creerUser(name, email, password);
 			// IL FAUDRA TESTER LE CAS OU LE NOM EST DEJA PRIS PAR UN AUTRE USER
-			UserJSP userCourant = gestionnaireUser.getUserByEmail(email);
-			List<PostJSP> postsAAfficher = gestionnairePost.getPostsTouslesAmis(userCourant);
+			User userCourant = gestionnaireUser.getUserByEmail(email);
 			List<Post> postsAAfficher = gestionnairePost.getPostsTouslesAmis(userCourant); // normalement, cette liste est vide
 			List<User> usersAAfficher = gestionnaireUser.getMyFriends(userCourant); // normalement, cette liste est vide
 			request.setAttribute("usersAAfficher", usersAAfficher);
