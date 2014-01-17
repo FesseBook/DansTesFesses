@@ -14,8 +14,10 @@ import com.mongodb.MongoClientOptions;
 import com.mongodb.MongoClientURI;
 import com.mongodb.MongoURI;
 
+import controler.dao.dao_impl.PostDAO_impl;
+import controler.dao.dao_impl.UserDAO_impl;
 import model.*;
-import dao.*;
+
 
 public class ManagerDAO {
 

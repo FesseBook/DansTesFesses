@@ -15,7 +15,7 @@ import test.ManagerDAO;
 import com.mongodb.*;
 import com.google.code.morphia.Morphia;
 
-import dao.UserDAO_impl;
+import controler.dao.dao_impl.UserDAO_impl;
 
 /**
  * Servlet implementation class MongoServlet

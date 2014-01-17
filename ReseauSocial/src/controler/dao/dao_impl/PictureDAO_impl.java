@@ -1,4 +1,4 @@
-package dao;
+package controler.dao.dao_impl;
 
 import java.util.List;
 
@@ -8,6 +8,8 @@ import model.Picture;
 import org.bson.types.ObjectId;
 
 import com.google.code.morphia.Datastore;
+
+import controler.dao.PictureDAO;
 
 public class PictureDAO_impl implements PictureDAO{
 	

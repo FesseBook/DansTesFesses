@@ -1,4 +1,4 @@
-package dao;
+package controler.dao.dao_impl;
 
 import java.util.List;
 
@@ -8,6 +8,7 @@ import com.google.code.morphia.Datastore;
 import com.google.code.morphia.Morphia;
 import com.mongodb.Mongo;
 
+import controler.dao.UserDAO;
 import model.Group;
 import model.Post;
 import model.User;
@@ -113,7 +114,7 @@ public class UserDAO_impl implements UserDAO {
 
 	// //////////////////////////////////////////////
 
-	public List<User> findByFriends(ObjectId friendId) {
+	public List<User> findByFriend(ObjectId friendId) {
 		return userDatastore.createQuery(User.class).field("_myFriends")
 				.hasThisElement(friendId).asList();
 	}
@@ -123,7 +124,11 @@ public class UserDAO_impl implements UserDAO {
 		return userDatastore.createQuery(User.class)
 				.filter("_myFriends in", friendIds).asList();
 	}
-
+	public List<User> findByIds(List<ObjectId> userIds) {
+		return userDatastore.createQuery(User.class)
+				.filter("_id in", userIds).asList();
+	}
+	
 	// /////////////////////////////////////////////
 
 	// //////////////////////////////////////////////
@@ -191,14 +196,14 @@ public class UserDAO_impl implements UserDAO {
 	}
 
 	
-	public void updateWholeDocument(String _id, User user) {
+	public void updateWholeUser(String _id, User user) {
 		User p = findById(_id);
 		user.set_id(p.get_id());
 		userDatastore.delete(p);
 		userDatastore.save(user);
 	}
 	
-	public void updateWholeDocument(ObjectId _id, User user) {
+	public void updateWholeUser(ObjectId _id, User user) {
 		User p = findById(_id);
 		user.set_id(p.get_id());
 		userDatastore.delete(p);

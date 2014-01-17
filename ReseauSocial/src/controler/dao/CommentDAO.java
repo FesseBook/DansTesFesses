@@ -1,4 +1,4 @@
-package dao;
+package controler.dao;
 
 public interface CommentDAO {
 

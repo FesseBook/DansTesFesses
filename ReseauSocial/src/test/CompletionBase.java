@@ -14,8 +14,8 @@ import com.google.code.morphia.Morphia;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientOptions;
 
-import dao.PostDAO_impl;
-import dao.UserDAO_impl;
+import controler.dao.dao_impl.PostDAO_impl;
+import controler.dao.dao_impl.UserDAO_impl;
 
 public class CompletionBase {
 	
@@ -92,9 +92,14 @@ PostDAO_impl postDao= new PostDAO_impl(testDatastore);
 		System.out.print("\n  ajout d un post en base \n");
 		postDao.create(post);
 		System.out.print("\n  post ajouté en base \n");
-		post = postDao.findPostedOnDateDscWithLimit("_user", user.get_id(), 1);
+		List<Post>lpost = postDao.findPostedOnDateDscWithLimit("_user", user.get_id(), 1);
+		post = lpost.get(0);
 		System.out.print("\n  post trouvé en base  \n");
+		
+		
 		userDao.addPostInvolvedIn(user.get_id(), post.get_id());
+		
+		
 		System.out.print("\n  user mis à jour \n");
 		System.out.print("=============================== \n =====================");
 		

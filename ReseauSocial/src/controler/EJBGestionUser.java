@@ -1,4 +1,4 @@
-package dao;
+package controler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +7,8 @@ import javax.ejb.Stateless;
 
 import org.bson.types.ObjectId;
 
+import controler.dao.PostDAO;
+import controler.dao.UserDAO;
 import model.Post;
 import model.User;
 

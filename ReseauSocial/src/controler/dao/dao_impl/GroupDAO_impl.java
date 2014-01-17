@@ -1,14 +1,15 @@
-package dao;
+package controler.dao.dao_impl;
 
 import java.util.List;
 
 import org.bson.types.ObjectId;
 
 import model.Group;
-
 import model.Group;
 
 import com.google.code.morphia.Datastore;
+
+import controler.dao.GroupDAO;
 
 public class GroupDAO_impl implements GroupDAO{
 
