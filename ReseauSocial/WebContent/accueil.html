@@ -37,7 +37,7 @@
 		<!-- ConnexionMenu -->
 		<div id="connexionMenu" class="connexionMenu">
 		
-			<form method="get" action="Servlet1" class="login">  
+			<form method="get" action="servlet" class="login">
 				<p>
 					<label for="login">Email:</label>
 					<input type="email" name="mail" id="login" value="name@example.com">
@@ -59,13 +59,13 @@
 		
 		<!-- InscriptionMenu -->
 		<div id="inscriptionMenu" class="inscriptionMenu">
-			<form method="post" action="Servlet1" class="inscription"> <!-- get -> post -->
+			<form method="get" action="Servlet" class="inscription">
 				<p>
-					<label for="nom">Nom :</label> <input type="text" id="nom" class="champ" name ="name"/><br/>
-					<label for="nom">Prénom :</label> <input type="text" id="prénom" class="champ" name="surname"/><br/>
-					<label for="mdp">Password :</label> <input type="password" id="mdp" class="champ" name="password"/><br/>
-					<label for="confirmation">Verif' :</label>  <input type="password" id="confirmation" class="passwordChk" /><br/>
-					<label for="mail">E-mail</label> <input type="text" id="email" class="champ" name="email"/>
+					<label for="nom">Nom :</label> <input type="text" id="nom" class="champ" name ="nom"/><br/>
+					<label for="nom">Prénom :</label> <input type="text" id="prénom" class="champ" name="prenom"/><br/>
+					<label for="mdp">Password :</label> <input type="password" id="mdp" class="champ" name="mdp"/><br/>
+					<label for="confirmation">Verif' :</label>  <input type="password" id="confirmation" class="champ" /><br/>
+					<label for="mail">E-mail</label> <input type="text" id="email" class="champ" name="mail"/>
 				</p>
 			
 			<p class="inscription-submit">
@@ -95,10 +95,12 @@
 			<div id="footer">	
 				<ul>
 				<li><a>Contact</a></li>
-				<li><a>Mentions Légales</a></li>
+				<li class = "Bouton" id = "ML" onclick="javascript:afficher_cacher('mentions');javascript:afficher_cacher('modal-header');javascript:afficher_cacher('modal-body');"><a>Mentions Légales</a></li>
 				</ul>			
 			</div>
 		<!-- /Footer -->
+
+
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 		<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
