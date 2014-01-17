@@ -4,7 +4,7 @@
 
 	body, input, select, textarea
 	{
-		font-size: 13pt;
+		font-size: 10pt;
 		line-height: 1.75em;
 		letter-spacing: 0.025em;
 		margin: 0 auto; 
@@ -36,7 +36,7 @@
 	
 	{
 		position: relative;
-		height: 400px;
+		height: 300px;
 		margin: 0 auto; 
 	}
 
@@ -164,7 +164,7 @@
 		{
 			position: absolute;
 			display: block;
-			top: 50em;
+			top: 60em;
 			left: 0;
 			width: 100%;
 			text-align: center;
@@ -236,10 +236,9 @@
 #connexionMenu {
 	position: absolute;
 	display: block;
-	top: 30em;
-	left: 50em;
+	top: 20em;
+	left: 38em;
 	width: 10%;
-	text-align: center;
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -622,7 +621,7 @@ label {
 #carrousel{
 	visibility:hidden;
 	position: absolute;
-	top: 300px;
+	top: 215px;
 	bottom: 50px;
 	left: 150px;
 	right: 150px;
@@ -633,29 +632,18 @@ label {
 
 
 #carrousel > ul > li {
-	/*margin: 0 auto;
-	text-align: center;
-	display: block;
-	position: absolute;
-	top: 45px;
-	bottom: 50px;
-	left: 400px;
-	right: 400px;
-	text-align: center;
-	display: block; 
-	margin: 0 auto;*/
 	width: 800px;
 	text-align: center;
 	display: block;
 	position: absolute;
-	left: 410px
+	left: 210px
 }
 
 #controls {
 	visibility:hidden;
 	margin: 0 auto;
 	position: absolute;
-	top: 300px;
+	top: 250px;
 	bottom: 50px;
 	left: 150px;
 	right: 150px;
