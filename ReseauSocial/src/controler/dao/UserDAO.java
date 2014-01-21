@@ -37,7 +37,7 @@ public interface UserDAO {
 	
 	public List<User> findByEmail(String email);
 	
-	public List<User> findByEmail(List<String> emails);
+	//public List<User> findByEmails(List<String> emails);
 	
 	public List<User> findByEmailWithLimit(String email, int limit);
 	

@@ -15,9 +15,14 @@ import controler.dao.UserDAO;
 import controler.dao.dao_impl.PostDAO_impl;
 import controler.dao.dao_impl.UserDAO_impl;
 import model.Comment;
+
+import model.GlobalBean;
 import model.Group;
+import model.GroupContainer;
+import model.Picture;
 import model.Post;
 import model.User;
+import model.UserContainer;
 
 //@Stateless
 public class EJBPrincipal implements  EJBPrincipal_itf{
@@ -29,6 +34,78 @@ public class EJBPrincipal implements  EJBPrincipal_itf{
 		userDAO = new UserDAO_impl(datastore);
 		postDAO = new PostDAO_impl(datastore);
 	}
+	
+	
+	
+	
+//create un global bean sans completer picturesContainer ni groupContainer ( pour l instant en tout cas !!! )
+	
+	public GlobalBean createGlobalBean( User user){
+		GlobalBean gb= new GlobalBean();
+		gb.set_id ( user.get_id());
+		gb.set_surname ( user.get_surname());
+		gb.set_name ( user.get_name());
+		gb.set_email ( user.get_email()); 
+		gb.set_login (user.get_email());
+		gb.set_postInvolved ( user.get_postInvolved());
+		gb.set_myFriends ( user.get_myFriends());
+		gb.set_myFiendsContainer( (ArrayList<UserContainer>) UserContainer.toList(this.USERfindUserByIds(user.get_myFriends() )));
+		
+		gb.set_myPictures(user.get_myPictures());
+		//gb.set_myPicturesContainer(			);
+		
+		gb.set_myGroups(user.get_myGroups());
+		//gb.set_myGroupContainer();
+		
+		
+		gb.set_waitingForYourFriendshipResponse(user.get_waitingForYourFriendshipResponse());
+		gb.set_waitingForYourFriendshipResponseContainer( (ArrayList<UserContainer>) UserContainer.toList(this.USERfindUserByIds( user.get_waitingForYourFriendshipResponse() ))   );
+		
+		gb.set_responsesYouAreWaitingFor(user.get_responsesYouAreWaitingFor());
+		gb.set_responsesYouAreWaitingForContainer( (ArrayList<UserContainer>) UserContainer.toList(this.USERfindUserByIds(user.get_responsesYouAreWaitingFor())));
+		
+		
+		
+		return gb;
+	}
+	
+	
+	
+//	public GlobalBean updateName(ObjectId id, String name){
+//		// mettre à jour l'objet GlobalBean
+//		//avant de propager la requête en base
+//	}
+//public GlobalBean updateSurname(ObjectId id){
+//		
+//	}
+//public GlobalBean updateEmail(ObjectId id){
+//	
+//}
+//public GlobalBean updateLogin(ObjectId id){
+//	
+//}
+//public GlobalBean updatePostInvolved(ObjectId id){
+//	
+//}
+//public GlobalBean updateFriends(ObjectId id){
+//	
+//}
+//public GlobalBean updatePictures(ObjectId id){
+//	
+//}
+//public GlobalBean updateGroups(ObjectId id){
+//	
+//}
+//public GlobalBean updateWaitingForYourFriendshipResponse(ObjectId id){
+//	
+//}
+//public GlobalBean updateResponsesYouAreWaitingFor(ObjectId id){
+//	
+//}
+	
+	
+	
+	
 	
 	
 	
@@ -54,8 +131,13 @@ public class EJBPrincipal implements  EJBPrincipal_itf{
 		userDAO.create(user);
 	}
 	/**********************************************/
-	public List<User> USERfindUserByIds( List<ObjectId> ids){
-		return userDAO.findByIds(ids);
+	public  List<User> USERfindUserByIds( List<ObjectId> ids){
+		if( ids == null){
+			return new ArrayList<User>();
+		}
+		else{
+			return userDAO.findByIds(ids);
+		}
 	}
 	
 //	public List<User> USERfindUserByIds( List<String> ids){
@@ -77,8 +159,8 @@ public class EJBPrincipal implements  EJBPrincipal_itf{
 	
 	/**********************************************/
 	
-	public User USERfindByEmail(String email){
-		return userDAO.findById(email);
+	public List<User> USERfindByEmail(String email){
+		return userDAO.findByEmail(email);
 	}
 	
 	

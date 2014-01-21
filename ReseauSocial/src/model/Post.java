@@ -96,6 +96,14 @@ public class Post {
 	public void set_postedOnId(ObjectId _postedOnId) {
 		this._postedOnId = _postedOnId;
 	}
+	@Override
+	public String toString() {
+		return "Post [_id=" + _id + ", _authorId=" + _authorId + ", _author="
+				+ _author + ", _date=" + _date + ", _body=" + _body
+				+ ", _likes=" + _likes + ", _tags=" + _tags
+				+ ", _postedOnType=" + _postedOnType + ", _postedOnId="
+				+ _postedOnId + "]";
+	}
 	
 	
 

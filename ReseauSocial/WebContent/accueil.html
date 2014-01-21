@@ -37,15 +37,15 @@
 		<!-- ConnexionMenu -->
 		<div id="connexionMenu" class="connexionMenu">
 		
-			<form method="get" action="servlet" class="login">
+			<form method="get" action="servlet1" class="login">
 				<p>
 					<label for="login">Email:</label>
-					<input type="email" name="mail" id="login" value="name@example.com">
+					<input type="email" name="email" id="login" value="name@example.com">
 				</p>
 
 				<p>
 					<label for="password">Password:</label>
-					<input type="password" name="mdp" id="password" value="4815162342">
+					<input type="password" name="password" id="password" value="4815162342">
 				</p>
 
 				<p class="login-submit">
@@ -59,13 +59,13 @@
 		
 		<!-- InscriptionMenu -->
 		<div id="inscriptionMenu" class="inscriptionMenu">
-			<form method="get" action="Servlet" class="inscription">
+			<form method="post" action="Servlet1" class="inscription">
 				<p>
-					<label for="nom">Nom :</label> <input type="text" id="nom" class="champ" name ="nom"/><br/>
-					<label for="nom">Prénom :</label> <input type="text" id="prénom" class="champ" name="prenom"/><br/>
-					<label for="mdp">Password :</label> <input type="password" id="mdp" class="champ" name="mdp"/><br/>
-					<label for="confirmation">Verif' :</label>  <input type="password" id="confirmation" class="champ" /><br/>
-					<label for="mail">E-mail</label> <input type="text" id="email" class="champ" name="mail"/>
+					<label for="nom">Nom :</label> <input type="text" id="nom" class="champ" name ="name"/><br/>
+					<label for="nom">Prénom :</label> <input type="text" id="prénom" class="champ" name="surname"/><br/>
+					<label for="mdp">Password :</label> <input type="password" id="mdp" class="champ" name="password"/><br/>
+					<label for="confirmation">Verif' :</label>  <input type="password" id="confirmation" class="passwordChk" /><br/>
+					<label for="email">E-mail</label> <input type="text" id="email" class="champ" name="email"/>
 				</p>
 			
 			<p class="inscription-submit">
@@ -214,7 +214,7 @@
 				// puis on lance la fonction de vérification sur tous les champs :
 				verifier($mdp);
 				verifier($confirmation);
-				verifier($mail);
+				verifier($email);
 			});
 
 			$reset.click(function(){

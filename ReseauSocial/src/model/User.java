@@ -61,12 +61,6 @@ public class User {
 	public void set_password(String _password) {
 		this._password = _password;
 	}
-	public ArrayList<ObjectId> get_myPostsAndComment() {
-		return _postInvolved;
-	}
-	public void set_myPostsAndComment(ArrayList<ObjectId> _myPostsAndComment) {
-		this._postInvolved = _myPostsAndComment;
-	}
 	public ArrayList<ObjectId> get_myFriends() {
 		return _myFriends;
 	}
@@ -110,6 +104,13 @@ public class User {
 	public void set_responsesYouAreWaitingFor(
 			ArrayList<ObjectId> _responsesYouAreWaitingFor) {
 		this._responsesYouAreWaitingFor = _responsesYouAreWaitingFor;
+	}
+
+	@Override
+	public String toString() {
+		return "User [_id=" + this.get_id() +"\n"+ ", _surname=" + this.get_surname() +"\n"+ ", _name="
+				+ this.get_name()  +"\n"+", _email=" + this.get_email() +"\n"+ ", _login=" + this.get_login()
+				+"\n"+ ", _password=" + this.get_password() + "]";
 	}
 	
 	

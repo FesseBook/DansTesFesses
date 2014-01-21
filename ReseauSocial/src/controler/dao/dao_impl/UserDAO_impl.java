@@ -85,10 +85,11 @@ public class UserDAO_impl implements UserDAO {
 				.equal(email).asList();
 	};
 
-	public List<User> findByEmail(List<String> emails) {
+	public List<User> findByEmails(List<String> emails) {
 		return userDatastore.createQuery(User.class)
-				.filter("_surname in", emails).asList();
+				.filter("_email in", emails).asList();
 	};
+	
 
 	public List<User> findByEmailWithLimit(String email, int limit) {
 		return userDatastore.createQuery(User.class).field("_email")
@@ -176,7 +177,7 @@ public class UserDAO_impl implements UserDAO {
 
 	public boolean emailPasswordValid(String email, String password) {
 		return (userDatastore.createQuery(User.class).filter("_email", email)
-				.filter("_password", password)) != null;
+				.filter("_password", password).get()) != null;
 	}
 	
 	public void updateSNELP(ObjectId userId, String surname, String name,

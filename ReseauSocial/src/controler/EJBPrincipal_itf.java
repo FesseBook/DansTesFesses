@@ -43,7 +43,7 @@ public interface EJBPrincipal_itf {
 	public User USERfindById( String id);
 	
 	/**********************************************/
-	public User USERfindByEmail(String email);
+	public List<User> USERfindByEmail(String email);
 	
 	/**********************************************/
 	public boolean USERareFiends(ObjectId objId, ObjectId friendId);
