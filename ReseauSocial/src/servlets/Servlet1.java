@@ -149,54 +149,15 @@ public class Servlet1 extends HttpServlet {
 		if (operation.equals("inscription")) {
 			// R�cup�rer les informations du futur User
 			String name = request.getParameter("name");
+			String surname = request.getParameter("surname");
 			String email = request.getParameter("email");
 			String password = request.getParameter("password");
 
-			System.out.print(" \n \n \n \n");
-			System.out.print("Vérification du couple email mot de passe");
-			System.out.print(" \n \n \n \n");
 
-			/****************************************/
-			/*                                      */
-			/* PARTIE A METTRE DANS EJBPrincipal    */
-			/*                                      */
-			/****************************************/
 			
-			if (!ejbP.USERemailPasswordValid(email, password)) {
-				ejbP.createUser(name, "surname", email, password);
-				
-				System.out.print(" \n \n ");
-				System.out.print("l'email n'existait pas on a crée l'utilisateur sans erreur");
-				System.out.print(" \n \n ");
-
-				List<User> lUser = (ArrayList<User>) ejbP
-						.USERfindByEmail(email);
-				
-				if (lUser != null) {
-					System.out
-							.print("recherche user par email passe sans erreur");
-					
-
-					if (lUser.isEmpty()) {
-						System.out
-								.println("la recherche par email a renvoyé une liste vide \n ");
-					} else {
-						
-						User user1 = lUser.get(0);
-//						System.out
-//						.println(user1.toString());
-						gbb = ejbP.createGlobalBean(user1);
-//						System.out
-//						.println(gbb.toString());
-					}
-
-				} else {
-					System.out.print("recherche user par email erreur");
-				}
-			} else {
-				System.out.print(" \n l 'utilisateur existe deja ");
-			}
-			
+		gbb = ejbP.registerUser(name, surname, email, password);
+		/* AJOUTER LES ATTRIBUTS A LA REPONSE */
+		/* REDIRIGER */
 			
 			
 
@@ -206,56 +167,14 @@ public class Servlet1 extends HttpServlet {
 			
 			String email = request.getParameter("email");
 			String password = request.getParameter("password");
-			if (!ejbP.USERemailPasswordValid(email, password)) {
-				
-				List<User> lUser = (ArrayList<User>) ejbP
-						.USERfindByEmail(email);
-				
-				if (lUser != null) {
-					System.out
-							.print("recherche user par email passe sans erreur");
-					
-
-					if (lUser.isEmpty()) {
-						System.out
-								.println("la recherche par email a renvoyé une liste vide \n ");
-					} else {
-						
-						User user1 = lUser.get(0);
-//						System.out
-//						.println(user1.toString());
-						
-						
-						/**************************************/
-						/*                                    */
-						/*        SESSION A CREER ?           */
-						/**************************************/
-						
-						
-						
-						gbb = ejbP.createGlobalBean(user1);
-//						System.out
-//						.println(gbb.toString());
-					}
-
-				} else {
-					System.out.print("recherche user par email erreur");
-				}
-				
-			}else{
-				//rediriger ou informer la page d'accueil que l 'utilisateur n 'existe pas
-			}
 			
+			gbb = ejbP.login(email, password);
+			/* AJOUTER LES ATTRIBUTS A LA REPONSE */
+			/* REDIRIGER */
 			
 		}
 
-		// TO DO checker que la combinaison email n'existe pas
-		// Creer l user
-		// Instancier une session
-		// Stocker l'user dans une instance User pour avoir ses attributs en
-		// cache
-		// Ajouter les Attribut à la requête
-		// Rediriger vers le home
+	
 
 		// /* // Cr�er le User et le stocker dans la base
 		// gestionnaireUser.creerUser(name, email, password);

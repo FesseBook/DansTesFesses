@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import model.Comment;
+import model.GlobalBean;
 import model.Post;
 import model.User;
 
@@ -21,6 +22,21 @@ public interface EJBPrincipal_itf {
 	/*														 */
 	/*														 */
 	/*********************************************************/
+	
+	
+	
+	public GlobalBean registerUser(String name,String surname, String email, String password);
+	
+	
+	
+	public GlobalBean login(String email, String password);
+	
+	
+	/**********************************************/
+	/**********************************************/
+	/**********************************************/
+	/**********************************************/
+	/**********************************************/
 	
 	public void createUser(String name, String surname, String email, String password);
 	

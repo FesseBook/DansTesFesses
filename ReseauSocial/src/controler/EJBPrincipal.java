@@ -15,7 +15,6 @@ import controler.dao.UserDAO;
 import controler.dao.dao_impl.PostDAO_impl;
 import controler.dao.dao_impl.UserDAO_impl;
 import model.Comment;
-
 import model.GlobalBean;
 import model.Group;
 import model.GroupContainer;
@@ -29,6 +28,7 @@ public class EJBPrincipal implements  EJBPrincipal_itf{
 	
 	private UserDAO userDAO;
 	private PostDAO postDAO;
+	private GlobalBean gb;
 	
 	public EJBPrincipal(Datastore datastore){
 		userDAO = new UserDAO_impl(datastore);
@@ -117,6 +117,103 @@ public class EJBPrincipal implements  EJBPrincipal_itf{
 	/*														 */
 	/*														 */
 	/*********************************************************/
+	
+	
+	public GlobalBean registerUser(String name,String surname, String email, String password){
+		if (!this.USERemailPasswordValid(email, password)) {
+			this.createUser(name, surname, email, password);
+			
+			System.out.print(" \n \n ");
+			System.out.print("l'email n'existait pas on a crée l'utilisateur sans erreur");
+			System.out.print(" \n \n ");
+
+			List<User> lUser = (ArrayList<User>) this.USERfindByEmail(email);
+			
+			if (lUser != null) {
+				System.out
+						.print("recherche user par email passe sans erreur");
+				
+
+				if (lUser.isEmpty()) {
+					System.out
+							.println("la recherche par email a renvoyé une liste vide \n ");
+				} else {
+					
+					User user1 = lUser.get(0);
+//					System.out
+//					.println(user1.toString());
+					this.gb = this.createGlobalBean(user1);
+//					System.out
+//					.println(gbb.toString());
+				}
+
+			} else {
+				System.out.print("recherche user par email erreur");
+			}
+		} else {
+			System.out.print(" \n l 'utilisateur existe deja ");
+		}
+		return this.gb;
+	}
+	
+	
+	
+
+	
+	
+	
+	public GlobalBean login(String email, String password){
+		
+		if (!this.USERemailPasswordValid(email, password)) {
+			
+			List<User> lUser = (ArrayList<User>) this.USERfindByEmail(email);
+			
+			if (lUser != null) {
+				System.out
+						.print("recherche user par email passe sans erreur");
+				
+
+				if (lUser.isEmpty()) {
+					System.out
+							.println("la recherche par email a renvoyé une liste vide \n ");
+					return null;
+				} else {
+					
+					User user1 = lUser.get(0);
+//					System.out
+//					.println(user1.toString());
+					
+					
+					/**************************************/
+					/*                                    */
+					/*        SESSION A CREER ?           */
+					/**************************************/
+					
+					
+					
+					this.gb = this.createGlobalBean(user1);
+//					System.out
+//					.println(gbb.toString());
+					return this.gb;
+				}
+
+			} else {
+				System.out.print("recherche user par email erreur");
+				return null;
+			}
+			
+		}else{
+			return null;
+			//rediriger ou informer la page d'accueil que l 'utilisateur n 'existe pas
+		}
+		
+	}
+	
+	
+	/**********************************************/
+	/**********************************************/
+	/**********************************************/
+	/**********************************************/
 	
 	public void createUser(String name, String surname, String email, String password){
 		User user = new User();
