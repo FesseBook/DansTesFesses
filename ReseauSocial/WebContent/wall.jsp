@@ -124,16 +124,18 @@ if (myPost!=null) {
 					<a href="#"><img src="Images/wall/Avatar.jpg" class="aminonconnecte"/><p>Pppppppppppppppppppppppppppppppppp</p></a>						
 				</div>				
 			</div>
+			<form method="post" action="Servlet1" class= "newPost">
 			<div id="posts-rapides">
 				<h2>New Post</h2>
 				<FORM>
 					<TEXTAREA name="nom" id="nouveau-post">Valeur par défaut</TEXTAREA>
 				</FORM>
-
+					
 				<div id="publier">				
-					<button class="btn btn-warning" type="submit">Publier</button>	
+					<button class="btn btn-warning" type="submit" name="operation" value="publication">Publier</button>	
 				</div>						
-			</div>	
+			</div>
+			</form>
 			<div id="home">
 				<a href="#" target="_self"><img rel="tooltip" src="Images/wall/Home.png" title="Home" id="image-home" height="64" width="64"/></a>					
 			</div>						

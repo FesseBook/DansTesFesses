@@ -47,22 +47,28 @@ public class EJBPrincipal implements  EJBPrincipal_itf{
 		gb.set_name ( user.get_name());
 		gb.set_email ( user.get_email()); 
 		gb.set_login (user.get_email());
-		gb.set_postInvolved ( user.get_postInvolved());
+		gb.set_postInvolved ( user.get_postInvolved()); // A la creation on se connecte à son propre wall
+		
 		gb.set_myFriends ( user.get_myFriends());
 		gb.set_myFiendsContainer( (ArrayList<UserContainer>) UserContainer.toList(this.USERfindUserByIds(user.get_myFriends() )));
-		
-		gb.set_myPictures(user.get_myPictures());
-		//gb.set_myPicturesContainer(			);
-		
-		gb.set_myGroups(user.get_myGroups());
-		//gb.set_myGroupContainer();
-		
 		
 		gb.set_waitingForYourFriendshipResponse(user.get_waitingForYourFriendshipResponse());
 		gb.set_waitingForYourFriendshipResponseContainer( (ArrayList<UserContainer>) UserContainer.toList(this.USERfindUserByIds( user.get_waitingForYourFriendshipResponse() ))   );
 		
 		gb.set_responsesYouAreWaitingFor(user.get_responsesYouAreWaitingFor());
 		gb.set_responsesYouAreWaitingForContainer( (ArrayList<UserContainer>) UserContainer.toList(this.USERfindUserByIds(user.get_responsesYouAreWaitingFor())));
+		
+		gb.set_currentWallId(user.get_id()); // rappel du type wall sur lequel on se trouve
+		gb.set_currentWallType("_user"); // idem avec l id pour effectuer les recherches dans la bonne collecfiton
+		
+		
+		gb.set_Pictures(user.get_myPictures());
+		//gb.set_myPicturesContainer(			);
+		
+		gb.set_Groups(user.get_myGroups());
+		//gb.set_myGroupContainer();
+		
+		
 		
 		
 		
