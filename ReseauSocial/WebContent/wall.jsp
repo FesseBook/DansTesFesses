@@ -22,16 +22,16 @@
 <header>
 	<div id="milieu">
 		<div id="menu-principal">
-			<a rel="tooltip" title="Home">
+			<a rel="tooltip" title="Home" class="onglet-default" onclick="afficherOnglet(this); afficherPage('le-mur')">
 				<h1>Home</h1>
 			</a>
-			<a rel="tooltip" title="Profil">
+			<a rel="tooltip" title="Profil" class="onglet-default" onclick="afficherOnglet(this); afficherPage('le-profil')">
 				<h1>Profil</h1>
 			</a>
-			<a rel="tooltip" title="Amis">
+			<a rel="tooltip" title="Amis" class="onglet-pas-default" onclick="afficherOnglet(this); afficherPage('les-amis')">
 				<h1>Amis</h1>
 			</a>
-			<a rel="Photo" title="Photos">
+			<a rel="Photo" title="Photos" class="onglet-default" onclick="afficherOnglet(this); afficherPage('les-photos')">
 				<h1>Photos</h1>
 			</a>							
 		</div>
@@ -79,11 +79,79 @@ if (myPost!=null) {
 			</div>	
 <%	} %>
 <% } %>								
-						<div class="auto"></div>																					
+						<div class="clear"></div>																					
 		</div>
-		<div class="auto"></div>		
+		<div id="le-profil">
+			<div>
+				<div class="bloc-post">
+					<div class="posteur"><a href="#"><img rel="tooltip" class="avatar" src="Images/wall/Avatar.jpg" title="Plop"/></a>16 Jan. 2014</div>
+					<p class="post">
+					Plop
+					</p>
+					<div class="menu">
+						<a target="_self" class="raccourci"><img rel="tooltip" src="Images/wall/Commentaires.png" onclick="afficherCommentaires(this)" title="Afficher les Commentaires" height="16" width="16"/></a>
+						<a target="_self" class="raccourci"><img rel="tooltip" src="Images/wall/Ecrire.png" onclick="nouveauCommentaire(this)" title="Ajouter un commentaire" height="16" width="16"/></a>
+					</div>
+				</div>
+				<div class="bloc-nouveau-commentaire">
+					<div><a href="#"><img rel="tooltip" src="Images/wall/Avatar.jpg" title="Paf"/></a>18 Jan. 2014</div>
+					<FORM>
+					<TEXTAREA name="nom">Valeur par défaut</TEXTAREA>
+					</FORM>	
+					<button class="btn btn-warning" type="submit">Publier</button>	
+				</div>						
+			</div>
+			<div class="clear"></div>	
+		</div>
+		<div id="les-amis">	
+			<div id="nouvelles-invitations"> 
+				<h2>Nouvelles invitations</h2>	
+				<div>
+					<div class="invitation"><img src="Images/wall/Avatar.jpg"/><p>Pouet</p>
+						<div class="menu">
+							<a target="_self" class="raccourci"><img rel="tooltip" src="Images/wall/Refuse.png" title="Refuser l'invitation" height="16" width="16"/></a>
+							<a target="_self" class="raccourci"><img rel="tooltip" src="Images/wall/Accept.png" title="Accepter l'invitation" height="16" width="16"/></a>
+						</div>			
+					</div>
+					<div class="invitation"><img src="Images/wall/Avatar.jpg"/><p>Prout</p>
+						<div class="menu">
+							<a target="_self" class="raccourci"><img rel="tooltip" src="Images/wall/Refuse.png" title="Refuser l'invitation" height="16" width="16"/></a>
+							<a target="_self" class="raccourci"><img rel="tooltip" src="Images/wall/Accept.png" title="Accepter l'invitation" height="16" width="16"/></a>
+						</div>			
+					</div>	
+					<div class="invitation"><img src="Images/wall/Avatar.jpg"/><p>Plouf</p>
+						<div class="menu">
+							<a target="_self" class="raccourci"><img rel="tooltip" src="Images/wall/Refuse.png" title="Refuser l'invitation" height="16" width="16"/></a>
+							<a target="_self" class="raccourci"><img rel="tooltip" src="Images/wall/Accept.png" title="Accepter l'invitation" height="16" width="16"/></a>
+						</div>			
+					</div>						
+				</div>		
+			</div>
+			<div id="recherche-personne">
+				<h2>Recherche</h2>
+				<div>
+					<input type="text"> <button class="btn btn-warning" type="submit">Rechercher</button>
+				</div>
+				<a href="#" class="amis"><img src="Images/wall/Avatar.jpg"/><p>Pouet</p></a>
+				<a href="#" class="amis"><img src="Images/wall/Avatar.jpg"/><p>Prout</p></a>		
+				<a href="#" class="amis"><img src="Images/wall/Avatar.jpg"/><p>Plouf</p></a>		
+				<a href="#" class="amis"><img src="Images/wall/Avatar.jpg"/><p>Ping</p></a>		
+				<a href="#" class="amis"><img src="Images/wall/Avatar.jpg"/><p>Pong</p></a>		
+				<a href="#" class="amis"><img src="Images/wall/Avatar.jpg"/><p>Poum</p></a>		
+				<a href="#" class="amis"><img src="Images/wall/Avatar.jpg"/><p>Plouc</p></a>		
+				<a href="#" class="amis"><img src="Images/wall/Avatar.jpg"/><p>Paf</p></a>
+				<a href="#" class="amis"><img src="Images/wall/Avatar.jpg"/><p>Pppppppppppppppppppppppppppppppppp</p></a>	
+				<div class="autres"><img src="Images/wall/Avatar.jpg"/><p>Autres1</p>
+					<div class="menu">
+						<a target="_self" class="raccourci"><img rel="tooltip" src="Plus.png" title="Ajouter à ma liste d'amis" height="16" width="16"/></a>
+					</div>			
+				</div>
+			</div>
+		</div>
+		<div id="les-photos">
+		</div>
 	</div>
-	<div class="auto"></div>	
+	<div class="clear"></div>	
 	
 	<div id="right">
 		<div id="profil">
@@ -92,11 +160,11 @@ if (myPost!=null) {
 				<p> <%= gb.get_surname() %> <br/> <%= gb.get_name() %> </p>	
 				<div id="raccourci-profil">
 					<a href="#" target="_self" class="raccourci"><img rel="tooltip" src="Images/wall/Deconnexion.png" title="Déconnexion" height="16" width="16"/></a>	
-					<a href="#" target="_self" class="raccourci"><img rel="tooltip" src="Images/wall/Reglages.png" title="Règlages" height="16" width="16"/></a>
-				</div>							
+				</div>	
 			</div>
 			<div id="amis">
 				<h2>Amis</h2>
+				
 				<div id="liste-amis">	
 					<a href="#"><img rel="tooltip" src="Images/wall/Avatar.jpg" title="Pouet" class="amiconnecte"/></a>
 					<a href="#"><img rel="tooltip" src="Images/wall/Avatar.jpg" title="Prout" class="amiconnecte"/></a>		
@@ -112,7 +180,8 @@ if (myPost!=null) {
 						<a href="#" target="_self" class="raccourci"><img rel="tooltip" src="Images/wall/Recherche.png" title="Recherche" height="16" width="16"/></a>																	
 					</div>	
 				</div>
-				<div id="liste-amis-complete" >
+				<!--<div id="liste-amis-complete" >-->
+				<form method="get" action="Servlet1" id="liste-amis-complete">
 					<a href="#"><img src="Images/wall/Avatar.jpg" class="amiconnecte"/><p>Pouet</p></a>
 					<a href="#"><img src="Images/wall/Avatar.jpg" class="amiconnecte"/><p>Prout</p></a>		
 					<a href="#"><img src="Images/wall/Avatar.jpg" class="aminonconnecte"/><p>Plouf</p></a>		
@@ -122,7 +191,8 @@ if (myPost!=null) {
 					<a href="#"><img src="Images/wall/Avatar.jpg" class="aminonconnecte"/><p>Plouc</p></a>		
 					<a href="#"><img src="Images/wall/Avatar.jpg" class="aminonconnecte"/><p>Paf</p></a>
 					<a href="#"><img src="Images/wall/Avatar.jpg" class="aminonconnecte"/><p>Pppppppppppppppppppppppppppppppppp</p></a>						
-				</div>				
+				<!--</div>-->
+				</form>
 			</div>
 			<form method="post" action="Servlet1" class= "newPost">
 			<div id="posts-rapides">
@@ -140,9 +210,9 @@ if (myPost!=null) {
 				<a href="#" target="_self"><img rel="tooltip" src="Images/wall/Home.png" title="Home" id="image-home" height="64" width="64"/></a>					
 			</div>						
 		</div>
-		<div class="auto"></div>	
+		<div class="clear"></div>	
 	</div>	
-	<div class="auto"></div>		
+	<div class="clear"></div>		
 </div>
 	
 <footer>
