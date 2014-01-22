@@ -107,6 +107,12 @@ PostDAO_impl postDao= new PostDAO_impl(testDatastore);
 		
 	}
 	
+	int randomUser2;
+	for (int i = 0; i < 20; i++) {
+		 randomUser = (int) (Math.random() * length2);
+		 randomUser2 =(int) (Math.random() * length2);
+		 userDao.addFriend(userlist.get(randomUser).get_id(), userlist.get(randomUser2).get_id());
+	}
 	
 }
 }

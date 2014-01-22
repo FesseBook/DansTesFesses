@@ -1,0 +1,529 @@
+@CHARSET "UTF-8";
+
+html, body
+{
+background-image: url(./Images/wall/banner.jpg);
+width: 100%;
+min-height: 100%;
+margin: 0px;
+padding: 0px;
+}
+
+/* ///////// Bannière ///////// */
+header
+{
+position: fixed;
+top: 0px;
+left: 0px;
+width: 100%;
+height: 50px;
+background-color: rgba(255, 118, 67, 1);
+opacity: 1;
+z-index:1;
+}
+
+
+/* // Menu // */
+#milieu
+{
+width: 1100px;
+height: 100%;
+margin: auto;
+position: relative;
+overflow: hidden;
+}
+
+#menu-principal
+{
+width: 800px;
+height: 100%;
+position: relative;
+overflow: hidden;
+}
+
+#menu-principal>a:first-child
+{
+border-left: 1px solid white;
+}
+
+#menu-principal>a
+{
+width: auto;
+height: 100%;
+padding: 16px 25px 16px 25px;
+margin: 0px;
+float: left;
+overflow: hidden;
+border-right: 1px solid white;
+background-color: rgba(1, 1, 1, 0.25);
+}
+
+#menu-principal>a>h1
+{
+color: orange;
+margin: 0px;
+padding: 0px;
+font-size: 18px;
+}
+/*///////////////////////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////////////////////*/
+
+/* ///////// Corps de la page ///////// */
+#principale
+{
+width: 1100px;
+height: 100%;
+margin: auto;
+margin-top: 0px;
+margin-bottom: 0px;
+position: relative;
+top: 50px;
+overflow: hidden;
+}
+
+/*///////////////////////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////////////////////*/
+#left
+{
+width: 800px;
+height: auto;
+position: relative;
+overflow: hidden;
+}
+
+/* /// Le Mur /// */
+#mur
+{
+width: 800px;
+height: auto;
+margin-top: 0px;
+margin-bottom: 30px;
+padding-top: 10px;
+padding-bottom: 15px;
+border-radius: 0px 0px 10px 10px;
+border-left: 3px double orange;
+border-right: 3px double orange;
+border-bottom: 3px double orange;
+background-color: rgba(255, 204, 153, 0.3);
+position: relative;
+overflow: hidden;
+}
+
+/* // Les Posts // */
+.bloc-post
+{
+opacity: 1;
+margin: 10px 20px 0px 20px;
+width: 755px;
+min-height: 110px;
+float: left;
+background-color: rgba(255, 204, 153, 1);
+border-radius: 10px;
+padding: 0px;
+}
+
+/* / Information sur le posteur (avatar + date) / */
+.posteur
+{
+margin: 15px 15px 15px 15px;
+float: left;
+width: 60px;
+height: 80px;
+min-height: 60px;
+border-radius: 10px;
+text-align: center;
+font-size: 9px;
+}
+
+.avatar
+{
+width: 60px;
+height: 60px;
+margin-bottom: 10px;
+border-radius: 10px;
+}
+
+/* / Corps du post / */
+.post
+{
+margin: 15px 15px 2px 15px;
+float: left;
+width: 635px;
+min-height: 73px;
+border-radius: 10px;
+text-align: justify
+}
+
+/* / Menu commentaire (nouveau commentaire + afficher commentaire) / */
+.bloc-post>.menu
+{
+margin: 0px;
+padding: 0px 5px 0px 5px;
+display: block;
+height: 20px;
+min-width: 0px;
+float: right;
+background-color: rgba(0,0,0,0.5);
+z-index:10000;
+border-radius: 10px 0px 10px 0px;
+}
+
+/* // Les Commentaires // */
+.bloc-commentaire
+{
+display: none;
+margin: 10px 20px 0px 0px;
+width: 400px;
+min-height: 80px;
+float: right;
+background-color: rgba(255, 244, 193, 1);
+border-radius: 10px;
+padding: 0px;
+}
+
+/* // Les Commentaires // */
+.bloc-commentaire>div
+{
+margin: 10px;
+float: left;
+width: 45px;
+height: 60px;
+border-radius: 10px;
+text-align: center;
+font-size: 7px;
+}
+
+/* / Information sur le commentateur (image + date) / */
+.bloc-commentaire>div>a
+{
+width: 45px;
+height: 50px;
+border-radius: 10px;
+}
+
+.bloc-commentaire>div>a>img
+{
+width: 45px;
+height: 45px;
+border-radius: 10px;
+}
+
+/* / corps du commentaire / */
+.commentaire
+{
+margin: 10px;
+float: right;
+width: 315px;
+min-height: 60px;
+font-size: 11px;
+text-align: justify;
+}
+
+/* // Les nouveaux commentaires (même structure que les commentaires) // */
+.bloc-nouveau-commentaire
+{
+display: none;
+margin: 10px 20px 0px 0px;
+width: 400px;
+min-height: 80px;
+float: right;
+background-color: rgba(255, 244, 193, 1);
+border-radius: 10px;
+padding: 0px;
+}
+
+.bloc-nouveau-commentaire>div
+{
+margin: 10px;
+float: left;
+width: 45px;
+height: 60px;
+border-radius: 10px;
+text-align: center;
+font-size: 7px;
+}
+
+.bloc-nouveau-commentaire>div>a
+{
+width: 45px;
+height: 50px;
+border-radius: 10px;
+}
+
+.bloc-nouveau-commentaire>div>a>img
+{
+width: 45px;
+height: 45px;
+border-radius: 10px;
+}
+
+.bloc-nouveau-commentaire>FORM
+{
+margin: 10px 10px 5px 10px;
+padding: 0px;
+float: right;
+width: 315px;
+min-height: 60px;
+}
+
+.bloc-nouveau-commentaire>FORM>TEXTAREA
+{
+margin: 0px;
+position: relative;
+width: 315px;
+min-height: 60px;
+font-size: 11px;
+text-align: justify;
+}
+
+.bloc-nouveau-commentaire>button
+{
+margin: 0px 10px 10px 0px;
+float: right;
+}
+
+/*///////////////////////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////////////////////*/
+#right
+{
+width: 242px;
+position: absolute;
+left: 838px;
+top: 0px;
+overflow: hidden;
+}
+
+/* //// Le Menu (droite) //// */
+#profil
+{
+width: 242px;
+height: 651px;
+margin-top: 20px;
+border: 3px double orange;
+background-color: rgba(255, 204, 153, 0.3);
+position: fixed;
+border-radius: 10px;
+}
+
+/* // Le profil // */
+#utilisateur
+{
+width: 236px;
+height: 100px;
+position: relative;
+border-radius: 10px 10px 0px 0px;
+}
+
+#avatar
+{
+position: absolute;
+top: 10px;
+left: 10px;
+overflow: hidden;
+border-radius: 10px;
+}
+
+
+#utilisateur>p
+{
+width: 124px;
+height: 45px;
+padding: 3px 3px 3px 0px;
+margin: 0px;
+
+position: absolute;
+top: 12px;
+left: 100px;
+
+white-space:nowrap;
+text-align: left;
+font-weight: bold;
+color: orange;
+text-overflow: ellipsis;
+overflow: hidden;
+}
+
+#raccourci-profil
+{
+width: auto;
+height: 22px;
+padding: 0px 2px 0px 2px;
+position: absolute;
+top: 62px;
+right: 15px;
+border-radius: 10px;
+background-color: orange;
+}
+
+/* // Les amis // */
+#amis
+{
+width: 236px;
+height: 271px;
+position: relative;
+}
+
+#amis>h2
+{
+color: orange;
+margin: 0px;
+font-size: 25px;
+position: absolute;
+top: 10px;
+left: 10px;
+}
+
+#liste-amis
+{
+border: 3px solid black;
+width: 216px;
+height: 216px;
+background-color: rgba(255, 204, 153, 1);
+position: absolute;
+top: 45px;
+left: 10px;
+}
+
+.amiconnecte
+{
+width: 60px;
+height: 60px;
+float: left;
+margin: 5px;
+border-radius: 10px;
+border: 3px solid orange;
+}
+
+.aminonconnecte
+{
+width: 60px;
+height: 60px;
+float: left;
+margin: 5px;
+border-radius: 10px;
+}
+
+/* / Menu raccourci ami / */
+#menu-amis
+{
+display: none;
+width: 210px;
+height: 20px;
+position: absolute;
+bottom: 0px;
+right: 0px;
+background-color: rgba(0,0,0,0.5);
+z-index:10000;
+}
+
+#liste-amis:hover #menu-amis
+{
+display: block;
+}
+
+/* / Liste ami complete active par JS / */
+#liste-amis-complete
+{
+display: none;
+width: 216px;
+max-height: 400px;
+overflow: auto;
+background-color: rgba(0,0,0,0.6);
+position: relative;
+left: 10px;
+top: 261px;
+z-index:10000;
+border-radius: 0px 0px 15px 15px;
+}
+
+#liste-amis-complete>a
+{
+margin: 5px 0px 0px 5px; 
+width: 196px;
+height: 70px;
+overflow: hidden;
+background-color: rgba(0,0,0,0.7);
+float: left;
+}
+
+#liste-amis-complete>a>p
+{
+color: orange;
+width: 115px;
+height: 60px;
+margin: 5px;
+float: left;
+padding: 16px 0px 0px 5px;
+font-size: 18px;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space:nowrap;
+text-align: left;
+}
+
+/* // Post-Rapide // */
+#posts-rapides
+{
+width: 236px;
+height: 190px;
+position: relative;
+}
+
+#posts-rapides h2
+{
+color: orange;
+margin: 0px;
+font-size: 25px;
+position: absolute;
+top: 10px;
+left: 10px;
+}
+
+#nouveau-post
+{
+width: 216px;
+height: 90px;
+position: absolute;
+top: 45px;
+left: 10px;
+overflow: auto;
+}
+
+#publier
+{
+position: absolute;
+bottom: 10px;
+right: 10px;
+}
+
+/* // Raccourci-maison // */
+#home
+{
+border-radius: 0px 0px 10px 10px;
+width: 236px;
+height: 90px;
+position: relative;
+}
+
+#image-home
+{
+position: absolute;
+top: 3px;
+left: 84px;
+}
+
+/* // Utilaire // */
+.raccourci
+{
+width: 16px;
+height: 16px;
+float: right;
+margin: 0px 2px 0px 2px;
+cursor: pointer;
+}
+
+.clear
+{
+clear:both;
+}
+

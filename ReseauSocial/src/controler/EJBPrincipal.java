@@ -164,7 +164,7 @@ public class EJBPrincipal implements  EJBPrincipal_itf{
 	
 	public GlobalBean login(String email, String password){
 		
-		if (!this.USERemailPasswordValid(email, password)) {
+		if (this.USERemailPasswordValid(email, password)) {
 			
 			List<User> lUser = (ArrayList<User>) this.USERfindByEmail(email);
 			
@@ -192,8 +192,13 @@ public class EJBPrincipal implements  EJBPrincipal_itf{
 					
 					
 					this.gb = this.createGlobalBean(user1);
+					List<Post> myFriendsPost = new ArrayList<Post>();
+					myFriendsPost = this.POSTfindByAuthorIdsDateDscWithLimit(this.gb.get_myFriends(), 20);
+					this.gb.set_postContainer((ArrayList<Post>)myFriendsPost);
 //					System.out
 //					.println(gbb.toString());
+					
+					System.out.println( "\n\n");
 					return this.gb;
 				}
 

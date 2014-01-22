@@ -41,31 +41,31 @@ public class MongoServlet extends HttpServlet {
     	
     	
     	////////////////// Completion de la base /////////////////////
-//    	 try {
-//    		 cmplB = new CompletionBase();
-//    		 System.out.println("BeforeCompletionBase");
-//    			cmplB.init();
-//			System.out.println("CompletionBase");
-//		} catch (UnknownHostException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-    	
-    	///////////////////////////////////////////////////////////////////////////////////
-    	
-    	Morphia morphia = new Morphia();
-    	morphia.mapPackage("model");
-    	//morphia.mapPackageFromClass(User.class);
-    	MongoClientOptions.Builder builder = new MongoClientOptions.Builder().alwaysUseMBeans(true);
-    	try {
-			datastore= morphia.createDatastore(	new MongoClient("localhost", builder.build()),"intergiciel");
+    	 try {
+    		 cmplB = new CompletionBase();
+    		 System.out.println("BeforeCompletionBase");
+    			cmplB.init();
+			System.out.println("CompletionBase");
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     	
-    	
-    	ejbP = new EJBPrincipal(datastore);
+    	///////////////////////////////////////////////////////////////////////////////////
+//    	
+//    	Morphia morphia = new Morphia();
+//    	morphia.mapPackage("model");
+//    	//morphia.mapPackageFromClass(User.class);
+//    	MongoClientOptions.Builder builder = new MongoClientOptions.Builder().alwaysUseMBeans(true);
+//    	try {
+//			datastore= morphia.createDatastore(	new MongoClient("localhost", builder.build()),"intergiciel");
+//		} catch (UnknownHostException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//    	
+//    	
+//    	ejbP = new EJBPrincipal(datastore);
     	//////////////////////////////////////////////////////////////////////////////////////
     	
     	ManagerDAO man;

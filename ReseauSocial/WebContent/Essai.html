@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="PagePersoStyle.css" />
+<link href="dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<script src="jquery-2.0.3.min.js" type="text/javascript"></script> 
+<script src="dist/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="script.js" type="text/javascript"></script>
+
+<title>Insert title here</title>
+</head>
+<body>
+		
+<header>
+	<div id="milieu">
+		<div id="menu-principal">
+			<a rel="tooltip" title="Home">
+				<h1>Home</h1>
+			</a>
+			<a rel="tooltip" title="Profil">
+				<h1>Profil</h1>
+			</a>
+			<a rel="tooltip" title="Amis">
+				<h1>Amis</h1>
+			</a>
+			<a rel="Photo" title="Photos">
+				<h1>Photos</h1>
+			</a>							
+		</div>
+	</div>
+</header>
+    
+<div id="principale">
+	<div id="left">
+		<div id="mur">
+					
+
+			<div>
+				<div class="bloc-post">
+					<div class="posteur"><a href="#"><img rel="tooltip" class="avatar" src="Images/wall/Avatar.jpg" title="Pouet"/></a>18 Jan. 2014</div>
+					<p class="post">
+					Pouët! Pouët! Non, il ne faisait pas « Pouët! Pouët!», le klaxon de la voiture de mon frère. La voiture de mon frère était plus petite que le jardin de ma sœur. C'était une 4 CV Renault, la bagnole de Tarin mon frangin. — (René Fallet, Les pieds dans l'eau, Mercure de France, 1974)
+					Pouët! Pouët! Non, il ne faisait pas « Pouët! Pouët!», le klaxon de la voiture de mon frère. La voiture de mon frère était plus petite que le jardin de ma sœur. C'était une 4 CV Renault, la bagnole de Tarin mon frangin. — (René Fallet, Les pieds dans l'eau, Mercure de France, 1974)
+					</p>
+					<div class="menu">
+						<a target="_self" class="raccourci"><img rel="tooltip" src="Images/wall/Commentaires.png" onclick="afficherCommentaires(this)" title="Afficher les Commentaires" height="16" width="16"/></a>
+						<a target="_self" class="raccourci"><img rel="tooltip" src="Images/wall/Ecrire.png" onclick="nouveauCommentaire(this)" title="Ajouter un commentaire" height="16" width="16"/></a>
+					</div>
+				</div>	
+				<div class="bloc-commentaire">
+					<div><a href="#"><img rel="tooltip" src="Images/wall/Avatar.jpg" title="Prout"/></a>18 Jan. 2014</div>
+					<p class="commentaire">
+					Lol!
+					</p>
+				</div>
+				<div class="bloc-commentaire">
+					<div><a href="#"><img rel="tooltip" src="Images/wall/Avatar.jpg" title="Paf"/></a>18 Jan. 2014</div>
+					<p class="commentaire">
+					Pouët! Pouët! Non, il ne faisait pas « Pouët! Pouët!», le klaxon de la voiture de mon frère. La voiture de mon frère était plus petite que le jardin de ma sœur. C'était une 4 CV Renault, la bagnole de Tarin mon frangin. — (René Fallet, Les pieds dans l'eau, Mercure de France, 1974)
+					Pouët! Pouët! Non, il ne faisait pas « Pouët! Pouët!», le klaxon de la voiture de mon frère. La voiture de mon frère était plus petite que le jardin de ma sœur. C'était une 4 CV Renault, la bagnole de Tarin mon frangin. — (René Fallet, Les pieds dans l'eau, Mercure de France, 1974) <br />
+					Toi-même !
+					</p>			
+				</div>
+				<div class="bloc-nouveau-commentaire">
+					<div><a href="#"><img rel="tooltip" src="Images/wall/Avatar.jpg" title="Paf"/></a>18 Jan. 2014</div>
+					<FORM>
+					<TEXTAREA name="nom">Valeur par défaut</TEXTAREA>
+					</FORM>	
+					<button class="btn btn-primary" type="submit">Publier</button>	
+				</div>				
+			</div>									
+						<div class="auto"></div>																					
+		</div>
+		<div class="auto"></div>		
+	</div>
+	<div class="auto"></div>	
+	
+	<div id="right">
+		<div id="profil">
+			<div id="utilisateur">
+				<a href="#" target="_self"><img src="Images/wall/Avatar.jpg" title="Photo de profil" id="avatar" height="80" width="80"/></a>
+				<p>Antoine <br />HochenedelPouetPouetPouet</p>	
+				<div id="raccourci-profil">
+					<a href="#" target="_self" class="raccourci"><img rel="tooltip" src="Deconnexion.png" title="Déconnexion" height="16" width="16"/></a>	
+					<a href="#" target="_self" class="raccourci"><img rel="tooltip" src="Reglages.png" title="Règlages" height="16" width="16"/></a>
+				</div>							
+			</div>
+			<div id="amis">
+				<h2>Amis</h2>
+				<div id="liste-amis">	
+					<a href="#"><img rel="tooltip" src="Images/wall/Avatar.jpg" title="Pouet" class="amiconnecte"/></a>
+					<a href="#"><img rel="tooltip" src="Images/wall/Avatar.jpg" title="Prout" class="amiconnecte"/></a>		
+					<a href="#"><img rel="tooltip" src="Images/wall/Avatar.jpg" title="Plouf" class="aminonconnecte"/></a>		
+					<a href="#"><img rel="tooltip" src="Images/wall/Avatar.jpg" title="Ping" class="aminonconnecte"/></a>		
+					<a href="#"><img rel="tooltip" src="Images/wall/Avatar.jpg" title="Pong" class="aminonconnecte"/></a>		
+					<a href="#"><img rel="tooltip" src="Images/wall/Avatar.jpg" title="Poum" class="aminonconnecte"/></a>		
+					<a href="#"><img rel="tooltip" src="Images/wall/Avatar.jpg" title="Plouc" class="aminonconnecte"/></a>		
+					<a href="#"><img rel="tooltip" src="Images/wall/Avatar.jpg" title="Paf" class="aminonconnecte"/></a>		
+					<div id="menu-amis">
+						<a target="_self" class="raccourci"><img rel="tooltip" src="ListeComplete.png" onclick="script:afficherListeComplete('liste-amis-complete')" title="Liste complète" height="16" width="16"/></a>
+						<a href="#" target="_self" class="raccourci"><img rel="tooltip" src="Amis.png" title="Gestion" height="16" width="16"/></a>
+						<a href="#" target="_self" class="raccourci"><img rel="tooltip" src="Recherche.png" title="Recherche" height="16" width="16"/></a>																	
+					</div>	
+				</div>
+				<div id="liste-amis-complete" >
+					<a href="#"><img src="Images/wall/Avatar.jpg" class="amiconnecte"/><p>Pouet</p></a>
+					<a href="#"><img src="Images/wall/Avatar.jpg" class="amiconnecte"/><p>Prout</p></a>		
+					<a href="#"><img src="Images/wall/Avatar.jpg" class="aminonconnecte"/><p>Plouf</p></a>		
+					<a href="#"><img src="Images/wall/Avatar.jpg" class="aminonconnecte"/><p>Ping</p></a>		
+					<a href="#"><img src="Images/wall/Avatar.jpg" class="aminonconnecte"/><p>Pong</p></a>		
+					<a href="#"><img src="Images/wall/Avatar.jpg" class="aminonconnecte"/><p>Poum</p></a>		
+					<a href="#"><img src="Images/wall/Avatar.jpg" class="aminonconnecte"/><p>Plouc</p></a>		
+					<a href="#"><img src="Images/wall/Avatar.jpg" class="aminonconnecte"/><p>Paf</p></a>
+					<a href="#"><img src="Images/wall/Avatar.jpg" class="aminonconnecte"/><p>Pppppppppppppppppppppppppppppppppp</p></a>						
+				</div>				
+			</div>
+			<div id="posts-rapides">
+				<h2>New Post</h2>
+				<FORM>
+					<TEXTAREA name="nom" id="nouveau-post">Valeur par défaut</TEXTAREA>
+				</FORM>
+
+				<div id="publier">				
+					<button class="btn btn-warning" type="submit">Publier</button>	
+				</div>						
+			</div>	
+			<div id="home">
+				<a href="#" target="_self"><img rel="tooltip" src="Images/wall/Home.png" title="Home" id="image-home" height="64" width="64"/></a>					
+			</div>						
+		</div>
+		<div class="auto"></div>	
+	</div>	
+	<div class="auto"></div>		
+</div>
+	
+<footer>
+</footer>
+</body>
+</html>
+	

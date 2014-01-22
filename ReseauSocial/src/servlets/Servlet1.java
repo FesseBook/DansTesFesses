@@ -159,7 +159,8 @@ public class Servlet1 extends HttpServlet {
 		/* AJOUTER LES ATTRIBUTS A LA REPONSE */
 		/* REDIRIGER */
 			
-			
+		request.setAttribute("globalBean", gbb);
+		request.getRequestDispatcher("wall.jsp").forward(request, response);
 
 		}
 		
@@ -169,6 +170,12 @@ public class Servlet1 extends HttpServlet {
 			String password = request.getParameter("password");
 			
 			gbb = ejbP.login(email, password);
+			if(gbb!= null){
+			request.setAttribute("globalBean", gbb);
+			request.getRequestDispatcher("wall.jsp").forward(request, response);
+			}
+			
+			
 			/* AJOUTER LES ATTRIBUTS A LA REPONSE */
 			/* REDIRIGER */
 			
