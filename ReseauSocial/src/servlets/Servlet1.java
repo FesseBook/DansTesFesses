@@ -180,6 +180,12 @@ public class Servlet1 extends HttpServlet {
 			/* REDIRIGER */
 			
 		}
+		
+		else if (operation.equals("publication")) {
+			
+			String body = request.getParameter("nom");
+			// A COMPLETER
+		}
 
 	
 
